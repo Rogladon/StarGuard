@@ -6,6 +6,7 @@ TagManager:
   tags:
   - stars
   - planets
+  - KillObject
   layers:
   - Default
   - TransparentFX

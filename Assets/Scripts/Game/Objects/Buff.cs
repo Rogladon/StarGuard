@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[CreateAssetMenu]
 abstract public class Buff : MonoBehaviour {
 	public string nameBuff;
 	public float timeLife;
@@ -15,8 +15,8 @@ abstract public class Buff : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update() {
-		_time += Time.deltaTime;
+	void FixedUpdate() {
+		_time += Time.fixedDeltaTime;
 		if (_time >= timeLife) {
 			entity.RemoveBuff(this);
 		}

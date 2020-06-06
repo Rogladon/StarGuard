@@ -18,4 +18,5 @@ MonoBehaviour:
   iconNoHas: {fileID: 21300000, guid: 7e901f63a44f5a34f9def8c5531a7c7d, type: 3}
   pack: 0
   index: 0
-  has: 0
+  has: 1
+  globalID: 0

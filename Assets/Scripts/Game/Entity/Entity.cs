@@ -22,7 +22,7 @@ public class Entity : MonoBehaviour {
 
 	[Header("Hidden")]
 	[SerializeField]
-	private List<Weapon> weapons;
+	public List<Weapon> weapons;
 	[SerializeField]
 	private List<Buff> buffs;
 
@@ -159,12 +159,14 @@ public class Entity : MonoBehaviour {
 				minPrecent = p;
 			}
 		}
-		if (minPrecent == 0) {
+		if (minPrecent == 1) {
 			if (PlayManager.countBonus[currentBonus] > 3) return;
 			GameObject go = Instantiate(currentBonus.gameObject);
 			go.transform.position = transform.position;
-			PlayManager.bonuses[currentBonus] -= PlayManager.bonuses[currentBonus] / 2;
-			PlayManager.countBonus[currentBonus]++;
+			if (currentBonus.GetType() == typeof(BonusWeapon)) {
+				PlayManager.bonuses[currentBonus] -= PlayManager.bonuses[currentBonus] / 2;
+				PlayManager.countBonus[currentBonus]++;
+			}
 		}
 		
 	}
@@ -176,6 +178,9 @@ public class Entity : MonoBehaviour {
 				entity.DoHit(1);
 				OnDestroyThis();
 			}
+		}
+		if (other.CompareTag("KillObject")) {
+			OnDestroyThis();
 		}
 	}
 

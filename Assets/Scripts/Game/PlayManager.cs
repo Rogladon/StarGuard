@@ -29,6 +29,10 @@ public class PlayManager : MonoBehaviour
 		borderField = _borderField;
 	}
 
+	private void Update() {
+		Bonuses.dictionary = bonuses;
+	}
+
 	public void Start() {
 		countBonus = new Dictionary<Bonus, int>();
 		foreach(var i in bonuses) {
