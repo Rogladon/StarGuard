@@ -29,6 +29,8 @@ public class Entity : MonoBehaviour {
 	[Header("Other")]
 	[SerializeField]
 	public int coins;
+	[HideInInspector]
+	public bool shield;
 	private int _lifes;
 	private int lifes {
 		get {
@@ -82,6 +84,7 @@ public class Entity : MonoBehaviour {
 	}
 
 	public void DoHit(int damage) {
+		if (shield) return;
 		lifes -= damage;
 	}
 

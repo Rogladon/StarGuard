@@ -13,6 +13,7 @@ public class Shield : Buff {
 		go.transform.localPosition = Vector3.zero;
 		part = go.GetComponent<ParticleSystem>();
 		speed = ((part.main.startColor.color.a - minColorAlpha)/timeLife);
+		entity.shield = true;
 	}
 
 	protected override void ActionUpdate() {
@@ -22,6 +23,7 @@ public class Shield : Buff {
 	}
 
 	protected override void OnDestroy() {
+		entity.shield = false;
 		Destroy(go);
 	}
 }
