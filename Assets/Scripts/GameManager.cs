@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
-{
-	public class ChoiceSkin : UnityEvent<int,int> { }
+public class GameManager : MonoBehaviour {
+	public class ChoiceSkin : UnityEvent<int, int> { }
 	public class BySkin : UnityEvent<int, int> { }
 	public class EndGame : UnityEvent<int> { }
-    public class Events {
+	public class Events {
 		public ChoiceSkin choiceSkin = new ChoiceSkin();
 		public BySkin bySkin = new BySkin();
 		public EndGame endGame = new EndGame();
@@ -26,8 +25,7 @@ public class GameManager : MonoBehaviour
 			return skins[player.pack][player.skins];
 		} }
 	public static List<List<Skin>> skins;
-	public static List<int> openSkins;
-
+	public static List<int> openSkins = new List<int>();
 
 	[SerializeField]
 	private List<Skin> _skins;
@@ -35,19 +33,21 @@ public class GameManager : MonoBehaviour
 
 
 	private void Awake() {
-		if (PlayerPrefs.HasKey("player")) {
-			Upload();
-		} 
+		Upload();
 		DontDestroyOnLoad(this);
 		skins = new List<List<Skin>>();
 		skins.Add(new List<Skin>());
 		skins.Add(new List<Skin>());
 		skins.Add(new List<Skin>());
 		for (int i = 0; i < _skins.Count; i++) {
+			_skins[i].globalID = i;
+			if (openSkins.Contains(i)) {
+				_skins[i].has = 1;
+			}
 			skins[_skins[i].pack].Add(_skins[i]);
 		}
-		for(int i = 0; i < skins.Count; i++) {
-			for(int j = 0; j < skins[i].Count; j++) {
+		for (int i = 0; i < skins.Count; i++) {
+			for (int j = 0; j < skins[i].Count; j++) {
 				skins[i][j].index = j;
 			}
 		}
@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 		});
 		events.bySkin.AddListener((int pack, int id) => {
 			skins[pack][id].has = 1;
+			openSkins.Add(skins[pack][id].globalID);
 			Save();
 		});
 		events.endGame.AddListener((int coins) => {
@@ -65,18 +66,33 @@ public class GameManager : MonoBehaviour
 			Save();
 		});
 		//TOODO
-		events.choiceSkin.Invoke(0,0);
+		events.choiceSkin.Invoke(0, 0);
 
 		//TODOO
 	}
 
+	class OpenSkills {
+		public List<int> openSkins = new List<int>();
+	}
 	public void Save() {
 		string json = JsonUtility.ToJson(player);
 		PlayerPrefs.SetString("player", json);
+		OpenSkills os = new OpenSkills();
+		os.openSkins = openSkins;
+		string osj = JsonUtility.ToJson(os);
+		PlayerPrefs.SetString("openSkins", osj);
 	}
 
 	public void Upload() {
-		player = JsonUtility.FromJson<Player>(PlayerPrefs.GetString("player"));
+		if (PlayerPrefs.HasKey("player")) {
+			player = JsonUtility.FromJson<Player>(PlayerPrefs.GetString("player"));
+		}
+		if (PlayerPrefs.HasKey("openSkins")) {
+			OpenSkills os = JsonUtility.FromJson<OpenSkills>(PlayerPrefs.GetString("openSkins"));
+			openSkins = os.openSkins;
+		} else {
+			openSkins.Add(0);
+		}
 	}
 
 	public void Start() {

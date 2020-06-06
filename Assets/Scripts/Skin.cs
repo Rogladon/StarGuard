@@ -11,4 +11,5 @@ public class Skin : ScriptableObject
 	public int pack;
 	public int index;
 	public int has;
+	public int globalID;
 }
