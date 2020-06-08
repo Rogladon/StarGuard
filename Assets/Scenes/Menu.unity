@@ -237,6 +237,7 @@ MonoBehaviour:
   mainMenu: {fileID: 1367603586}
   mall: {fileID: 1852181256}
   animatorDoor: {fileID: 1627921741}
+  openMall: 1
   speedScrool: 0
 --- !u!1 &154144690
 GameObject:
@@ -1322,7 +1323,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 125124555}
-        m_MethodName: Menu
+        m_MethodName: Mall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -34,7 +34,7 @@ public class Mall : MonoBehaviour
 		} else {
 			btnBy.interactable = false;
 		}
-		foreach(var i in items) {
+		foreach (var i in items) {
 			Destroy(i.gameObject);
 		}
 		items.Clear();

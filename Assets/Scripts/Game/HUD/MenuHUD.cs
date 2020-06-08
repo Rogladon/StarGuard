@@ -13,19 +13,22 @@ public class MenuHUD : MonoBehaviour
 	public class CloseMall : UnityEvent { }
 
 	public class Events {
-		public OpenMall openMall = new OpenMall();
-		public CloseMall closeMall = new CloseMall();
+		public OpenMall openDoor = new OpenMall();
 	}
 	public static Events events = new Events();
+	public bool openMall = true;
 	private void Start() {
-		events.openMall.AddListener(() => {
-			mall.SetActive(true);
-			mainMenu.SetActive(false);
-		});
-
-		events.closeMall.AddListener(() => {
-			mall.SetActive(false);
-			mainMenu.SetActive(true);
+		events.openDoor.AddListener(() => {
+			if (openMall) {
+				mall.SetActive(true);
+				mainMenu.SetActive(false);
+				openMall = false;
+			} else {
+				mall.SetActive(false);
+				mainMenu.SetActive(true);
+				openMall = true;
+			}
+			animatorDoor.SetTrigger("Close");
 		});
 	}
 	public float speedScrool;
@@ -46,8 +49,5 @@ public class MenuHUD : MonoBehaviour
 
 	public void Mall() {
 		animatorDoor.SetTrigger("Open");
-	}
-	public void Menu() {
-		animatorDoor.SetTrigger("Close");
 	}
 }
