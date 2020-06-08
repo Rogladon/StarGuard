@@ -11,10 +11,13 @@ abstract public class Buff : MonoBehaviour {
 
 	void Awake() {
 		entity = GetComponentInParent<Entity>();
+		
+	}
+
+	private void Start() {
 		Action();
 	}
 
-	// Update is called once per frame
 	void FixedUpdate() {
 		_time += Time.fixedDeltaTime;
 		if (_time >= timeLife) {

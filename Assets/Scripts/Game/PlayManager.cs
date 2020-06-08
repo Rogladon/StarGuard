@@ -21,7 +21,7 @@ public class PlayManager : MonoBehaviour
 	public static float borderField;
 
 	void Awake() {
-		entityPlayer = Instantiate(GameManager.skins[GameManager.player.pack][GameManager.player.skins].prefab).GetComponent<Entity>();
+		entityPlayer = Instantiate(GameManager.skins[GameManager.player.pack][GameManager.player.skins].prefab, Camera.main.transform).GetComponent<Entity>();
 		entityPlayer.position = Vector2.zero;
 		coinPrefab = _coinPrefab;
 		speed = _speed;

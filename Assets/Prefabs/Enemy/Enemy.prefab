@@ -57,7 +57,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 734463406953648741}
+  - {fileID: 734463406953648740}
   - {fileID: 7486149199611249505}
   - {fileID: 6194726560329382761}
   m_Father: {fileID: 6258517388590273647}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
-  maxLifes: 9
+  maxLifes: 27
   speed: 2
   kReload: 1
   staticWeapons:
@@ -241,6 +241,7 @@ MonoBehaviour:
   weapons: []
   buffs: []
   coins: 2
+  shield: 0
 --- !u!61 &8505251683831635158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -393,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed6a0a658b1300d4d8f702301536db5b, type: 3}
---- !u!4 &734463406953648741 stripped
+--- !u!4 &734463406953648740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1703274393509434037, guid: ed6a0a658b1300d4d8f702301536db5b,
     type: 3}

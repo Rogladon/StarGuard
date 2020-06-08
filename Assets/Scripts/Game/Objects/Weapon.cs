@@ -5,7 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 	public enum TypeMissle {
-		forward
+		forward,
+		explose
 	}
 	[Header("Stats")]
 	public int damage;
@@ -27,7 +28,7 @@ public class Weapon : MonoBehaviour
 	}
 	private float _timer;
 
-	public void Start() {
+	public void Awake() {
 		entity = GetComponentInParent<Entity>();
 		reload *= entity.kReload;
 		prefabMissle = entity.missles[typeMissle];

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Missle : MonoBehaviour
 {
-	public float speed;
-	public int damage;
-	public Vector2 dir;
+	protected float speed;
+	protected int damage;
+	protected Vector2 dir;
 
 
 	public void SetInfo(float speed, int damage, Vector2 dir) {
@@ -17,7 +17,6 @@ public class Missle : MonoBehaviour
 	}
 
 	void Update() {
-		
 		transform.position += transform.up * speed * Time.deltaTime;
 	}
 
@@ -26,12 +25,13 @@ public class Missle : MonoBehaviour
 			Entity entity;
 			if(other.TryGetComponent(out entity)) {
 				entity.DoHit(damage);
+				OnThisDestroy();
 				Destroy(gameObject);
 			}
 		}
 	}
 
-	private void OnDestroy() {
-		
+	virtual protected void OnThisDestroy() {
+
 	}
 }
