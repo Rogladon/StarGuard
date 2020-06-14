@@ -2,63 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[SerializeField]
-public class Stat : ScriptableObject{
-	protected Entity entity;
-	public float a;
-	public string type {
-		get {
-			return this.GetType().Name;
-		}
-	}
-}
-[SerializeField]
-public class SimpleFly : Stat {
-	public float speed;
-	public float dir;
-	//public SimpleFly() {
-		
-	//}
-	public void Update() {
-		//entity.position += entity.directon * entity.speed * Time.deltaTime;
-	}
-}
-[SerializeField]
-public class Shoot : Stat {
-	public Vector2 minMaxTime;
-	public GameObject prefabMissle;
-	//public Shoot(Entity e) {
-	//	entity = e;
-	//}
-	public void Update() {
-		
-	}
-}
+
 
 
 public class AI : MonoBehaviour
 {
-	public string Name;
 	public enum sta {
 		SimpleFly,
 		Shoot
 	}
 	[HideInInspector]
-	public List<Stat> stats = new List<Stat>();
+	public List<Action> actions = new List<Action>();
 	Entity entity;
 	[HideInInspector]
 	public sta _enum;
     void Start()
     {
 		entity = GetComponent<Entity>();
+		foreach (var i in actions) {
+			i.entity = entity;
+		}
+		StartActions();
     }
 	[ContextMenu("ClearStat")]
 	public void ClearStat() {
-		stats.Clear();
+		actions.Clear();
 	}
 
     void Update()
     {
-		
+		UpdateActions();
     }
+
+	void UpdateActions() {
+		foreach (var i in actions) {
+			i.Update();
+		}
+	}
+
+	void StartActions() {
+		foreach(var i in actions) {
+			i.Start();
+		}
+	}
 }

@@ -9,7 +9,7 @@ public class SODataBehaviourEditor : Editor {
 	private AI ai;
 	SerializedProperty _enum;
 	int id = 0;
-	string path (Stat s) {
+	string path (Action s) {
 		return "Assets/ScriptableObjects/EnemyAI/" + ai.name + s.type + id.ToString()+".asset";
 	}
 	void OnEnable() {
@@ -19,32 +19,36 @@ public class SODataBehaviourEditor : Editor {
 
 	public override void OnInspectorGUI() {
 		DrawDefaultInspector();
-		List<Stat> stats = ai.stats;
+		List<Action> actions = ai.actions;
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.PropertyField(_enum);
 		if (GUILayout.Button("+")) {
 			switch (ai._enum) {
 				case AI.sta.SimpleFly:
-					SimpleFly s = CreateInstance<SimpleFly>();
-					id = 0;
-					while (AssetDatabase.IsMainAssetAtPathLoaded(path(s))) {
-						id++;
-					}
-					AssetDatabase.CreateAsset(s, path(s));
-					AssetDatabase.Refresh();
-					stats.Add(s);
+					//SimpleFly s = CreateInstance<SimpleFly>();
+					//s.entity = ai.GetComponent<Entity>();
+					//id = 0;
+					//while (AssetDatabase.IsMainAssetAtPathLoaded(path(s))) {
+					//	id++;
+					//}
+					//AssetDatabase.CreateAsset(s, path(s));
+					//AssetDatabase.Refresh();
+					SimpleFly s = new SimpleFly();
+					actions.Add(s);
 					break;
 				case AI.sta.Shoot:
-					Shoot sh = CreateInstance<Shoot>();
-					AssetDatabase.CreateAsset(sh, path(sh));
-					AssetDatabase.Refresh();
-					stats.Add(sh);
+					//Shoot sh = CreateInstance<Shoot>();
+					//sh.entity = ai.GetComponent<Entity>();
+					//AssetDatabase.CreateAsset(sh, path(sh));
+					//AssetDatabase.Refresh();
+					Shoot sh = new Shoot();
+					actions.Add(sh);
 					break;
 			}
 		}
 		EditorGUILayout.EndHorizontal();
-		List<Stat> removeStat = new List<Stat>();
-		foreach (var i in stats) {
+		List<Action> removeStat = new List<Action>();
+		foreach (var i in actions) {
 			EditorGUILayout.Space(10);
 			EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.LabelField(i.type);
@@ -66,11 +70,11 @@ public class SODataBehaviourEditor : Editor {
 			EditorGUILayout.LabelField("--------------------------------------------------------------");
 			
 		}
+
 		foreach(var i in removeStat) {
-			stats.Remove(i);
-			AssetDatabase.DeleteAsset(path(i));
+			actions.Remove(i);
 		}
-		EditorUtility.SetDirty(ai);
+		//EditorUtility.SetDirty(ai);
 		serializedObject.ApplyModifiedProperties();
 	}
 }
