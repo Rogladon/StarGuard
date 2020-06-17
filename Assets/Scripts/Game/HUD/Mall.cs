@@ -20,6 +20,8 @@ public class Mall : MonoBehaviour
 	public Text textMoney;
 	public int price;
 
+	private GameObject emptyItem;
+
 	private void OnEnable() {
 		textMoney.text = GameManager.player.coins.ToString();
 		InstItem(curPack);
@@ -37,12 +39,19 @@ public class Mall : MonoBehaviour
 		foreach (var i in items) {
 			Destroy(i.gameObject);
 		}
+		Destroy(emptyItem);
 		items.Clear();
 		var skins = GameManager.skins;
 		for (int j = 0; j < skins[pack].Count; j++) {
 			Item go = Instantiate(item, panel.transform).GetComponent<Item>();
 			go.GetComponent<Item>().Init(skins[pack][j], this);
 			items.Add(go);
+			if(j == 0) {
+				go = Instantiate(item, panel.transform).GetComponent<Item>();
+				go.icon.enabled = false;
+				go.btn.enabled = false;
+				emptyItem = go.gameObject;
+			}
 		}
 	}
 

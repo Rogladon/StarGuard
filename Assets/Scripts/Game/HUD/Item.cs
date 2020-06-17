@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
+	[SerializeField]
+	public Image icon;
+	[SerializeField]
+	public Button btn;
 	Skin skin;
 	Mall mall;
 	public bool has {
@@ -17,13 +21,14 @@ public class Item : MonoBehaviour
 	public void Init(Skin s, Mall m) {
 		skin = s;
 		mall = m;
+		SetIcon();
 		if (has) {
-			GetComponent<Image>().sprite = s.iconHas;
+			ActiveIcon();
 		} else {
-			GetComponent<Image>().sprite = s.iconNoHas;
+			UnActiveIcon();
 		}
-		GetComponent<Button>().interactable = has;
-		GetComponent<Button>().onClick.AddListener(() => {
+		btn.interactable = has;
+		btn.onClick.AddListener(() => {
 			GameManager.events.choiceSkin.Invoke(skin.pack,skin.index);
 			Choice();
 		});
@@ -31,8 +36,32 @@ public class Item : MonoBehaviour
 
 	public void BySelf() {
 		GameManager.events.bySkin.Invoke(skin.pack, skin.index);
-		GetComponent<Image>().sprite = skin.iconHas;
-		GetComponent<Button>().interactable = has;
+		ActiveIcon();
+		btn.interactable = has;
+	}
+
+	private void SetIcon() {
+		icon.sprite = skin.icon;
+		float width = skin.icon.rect.size.x;
+		float height = skin.icon.rect.size.y;
+		//icon.rectTransform.sizeDelta = GetComponent<RectTransform>().sizeDelta;
+		Vector3 scale = icon.transform.localScale;
+		Debug.Log(width + "  " + height);
+		if (width < height) {
+
+			scale.x = width / height;
+		} else {
+			scale.y = height / width;
+		}
+		icon.transform.localScale = scale;
+	}
+
+	private void ActiveIcon() {
+		icon.color = Color.white;
+	}
+
+	private void UnActiveIcon() {
+		icon.color = Color.black;
 	}
 
 	private void Choice() {

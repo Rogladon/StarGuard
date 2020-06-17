@@ -9,19 +9,18 @@ public class AI : MonoBehaviour
 {
 	public enum sta {
 		SimpleFly,
-		Shoot
+		Shoot,
+		RootRandom
 	}
 	[HideInInspector]
 	public List<Action> actions = new List<Action>();
-	Entity entity;
+	public Entity entity;
 	[HideInInspector]
 	public sta _enum;
+	public Dictionary<string, float> randomValue = new Dictionary<string, float>();
     void Start()
     {
 		entity = GetComponent<Entity>();
-		foreach (var i in actions) {
-			i.entity = entity;
-		}
 		StartActions();
     }
 	[ContextMenu("ClearStat")]
@@ -36,13 +35,13 @@ public class AI : MonoBehaviour
 
 	void UpdateActions() {
 		foreach (var i in actions) {
-			i.Update();
+			i.UpdateAction(this);
 		}
 	}
 
 	void StartActions() {
 		foreach(var i in actions) {
-			i.Start();
+			i.StartAction(this);
 		}
 	}
 }

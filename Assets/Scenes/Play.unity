@@ -1048,16 +1048,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521926818}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 853d00ac9d4c64749a29fef51ec946f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
     keys:
-    - {fileID: 6213041888920877610, guid: abbcc7a0f38c22044a8ec815e987fbc1, type: 3}
+    - {fileID: 5211063951735623484, guid: 91f5cf9f0070d2e4c8313b00316bc658, type: 3}
+    - {fileID: 4467974486459952622, guid: 7c2059623f8ea3f49bb85c37658e369f, type: 3}
+    - {fileID: 2897494138054202929, guid: 3e7259d2223ed7b4d98b1f45b63b530c, type: 3}
+    - {fileID: 5995462133401896883, guid: ef3016773297f184d952a866851e774a, type: 3}
     values:
-    - 0.5
+    - 50
+    - 50
+    - 50
+    - 40
+  k: 300
+  kSpeed: 400
+  avengerTime: 2
+  time: 0
+  timeSpeed: 0
+  _timer: 0
 --- !u!4 &521926820
 Transform:
   m_ObjectHideFlags: 0

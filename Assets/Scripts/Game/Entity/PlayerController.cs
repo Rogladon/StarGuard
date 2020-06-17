@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
 			if (Physics2D.Raycast(curMousePos, Vector2.zero)) {
 				RaycastHit2D hit = Physics2D.Raycast(curMousePos, Vector2.zero);
 				Vector3 pos = hit.point;
-				Debug.Log(hit.point);
 				pos.z = 0;
 				pos += (delta-cam.position);
 				endPosition = pos;

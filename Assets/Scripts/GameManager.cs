@@ -107,4 +107,11 @@ public class GameManager : MonoBehaviour {
 	public static void BackMenu() {
 		SceneManager.LoadScene(1);
 	}
+
+
+	[ContextMenu("DeleteAllSheeps")]
+	void DeleteAllSheep() {
+		PlayerPrefs.DeleteKey("openSkins");
+	}
+
 }

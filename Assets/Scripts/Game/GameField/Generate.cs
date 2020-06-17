@@ -9,17 +9,19 @@ public class Generate : MonoBehaviour
 	public float _timer;
 	MainGeneration.AreaCreate area;
 
-	public void Init(Entity e, float t, MainGeneration.AreaCreate a) {
+	public void Init(Entity e, float t, MainGeneration.AreaCreate a, float _k) {
 		entity = e;
 		avengerTime = t;
 		area = a;
-		k = 0.008f;
-		time = 1 / k*avengerTime;
+		k = _k;
+		time = k / avengerTime;
+		timeSpeed = k / entity.speed;
 	}
-	float time = 0;
+	public float time = 0;
+	public float timeSpeed = 0;
 	public float k;
 	private void Update() {
-		avengerTime = 1 / time / k;
+		avengerTime = k / time;
 		_timer-=Time.deltaTime;
 		time += Time.deltaTime;
 		if(_timer <= 0) {
@@ -27,8 +29,8 @@ public class Generate : MonoBehaviour
 			go.transform.position = area.GetPosition();
 			go.transform.position = area.GetPosition();
 			go.transform.up = area.GetDirect();
-			go.GetComponent<Entity>().speed *= 1/avengerTime;
-			_timer = Random.Range(avengerTime - avengerTime / 4, avengerTime - avengerTime / 4);
+			go.GetComponent<Entity>().speed = k/timeSpeed;
+			_timer = Random.Range(avengerTime - avengerTime / 4, avengerTime + avengerTime / 4);
 		}
 	}
 }

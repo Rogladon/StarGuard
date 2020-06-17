@@ -6,7 +6,9 @@ public class MainGeneration : MonoBehaviour {
 	public EntityTimeDictionary Enemies = EntityTimeDictionary.New<EntityTimeDictionary>();
 	public Dictionary<Entity, float> enemies { get { return Enemies.dictionary; } }
 
-
+	public float k;
+	public float kSpeed;
+	public float avengerTime;
 	public class AreaCreate {
 		public enum Area {
 			left,
@@ -40,7 +42,7 @@ public class MainGeneration : MonoBehaviour {
 					pos.z = 0;
 					break;
 				case Area.up:
-					pos.y = up + 3;
+					pos.y = up + 1;
 					pos.x = Random.Range(left, right);
 					pos.z = 0;
 					break;
@@ -66,7 +68,7 @@ public class MainGeneration : MonoBehaviour {
 					pos.z = 0;
 					break;
 				case Area.up:
-					pos.y = up + 3;
+					pos.y = up + 1;
 					pos.x = Random.Range(left, right);
 					pos.z = 0;
 					break;
@@ -111,21 +113,52 @@ public class MainGeneration : MonoBehaviour {
 
 	}
 	[SerializeField]
-	public AreaCreate areaCreate;
+	public AreaCreate area;
+
+	Dictionary<Entity, float> entitySpeed = new Dictionary<Entity, float>();
 
 	private void Start() {
-		areaCreate = new AreaCreate(AreaCreate.Area.up);
+		area = new AreaCreate(AreaCreate.Area.up);
 		foreach(var i in enemies) {
-			GameObject go = new GameObject();
-			Generate g = go.AddComponent<Generate>();
-			g.Init(i.Key, i.Value, areaCreate);
-
-			Debug.Log(g.avengerTime);
+			entitySpeed.Add(i.Key, kSpeed / i.Key.speed);
 		}
-	}
+		//foreach(var i in enemies) {
+		//	GameObject go = new GameObject();
+		//	Generate g = go.AddComponent<Generate>();
+		//	g.Init(i.Key, i.Value*enemies.Count, areaCreate,k);
 
+		//	Debug.Log(g.avengerTime);
+		//}
+		time = k / avengerTime;
+	}
+	public float time = 0;
+	public float timeSpeed = 0;
+	public float _timer;
 	private void Update() {
-		
+		foreach(var i in enemies) {
+			entitySpeed[i.Key] += Time.deltaTime;
+		}
+		avengerTime = k / time;
+		_timer -= Time.deltaTime;
+		time += Time.deltaTime;
+		if (_timer <= 0) {
+			Entity entity = enemies.Keys.GetEnumerator().Current;
+			int minPrecent = int.MaxValue;
+			Dictionary<Entity, int> keyValues = new Dictionary<Entity, int>();
+			foreach (var i in enemies) {
+				int p = Random.Range(0, Mathf.RoundToInt(100 / i.Value));
+				keyValues.Add(i.Key, p);
+				if (p < minPrecent) {
+					entity = i.Key;
+					minPrecent = p;
+				}
+			}
+			GameObject go = Instantiate(entity.gameObject);
+			go.transform.position = area.GetPosition();
+			go.transform.up = area.GetDirect();
+			go.GetComponent<Entity>().speed = (entity.speed*2)-(kSpeed / entitySpeed[entity]);
+			_timer = Random.Range(avengerTime - avengerTime / 4, avengerTime + avengerTime / 4);
+		}
 	}
 
 

@@ -13,7 +13,7 @@ public class Missle : MonoBehaviour
 		this.speed = speed;
 		this.damage = damage;
 		this.dir = dir;
-		transform.rotation = Quaternion.Euler(dir);
+		transform.up = dir;
 	}
 
 	void Update() {

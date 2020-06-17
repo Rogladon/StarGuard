@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: SkinLeks
   m_EditorClassIdentifier: 
   prefab: {fileID: 1787695430541495480, guid: d6e7de4d0738c5b4e9c6391fc13e3175, type: 3}
-  iconHas: {fileID: -8402389769702573953, guid: 900daec4b6051ae4a94ae3faee3c1a9f,
-    type: 3}
-  iconNoHas: {fileID: 21300000, guid: 7e901f63a44f5a34f9def8c5531a7c7d, type: 3}
+  icon: {fileID: -8402389769702573953, guid: 900daec4b6051ae4a94ae3faee3c1a9f, type: 3}
   pack: 0
   index: 1
   has: 0
+  globalID: 1

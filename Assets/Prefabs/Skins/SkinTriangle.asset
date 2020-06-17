@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SkinTriangle
   m_EditorClassIdentifier: 
   prefab: {fileID: 4432811489001141811, guid: ca354c9e4a251954da5e750cac1c4429, type: 3}
-  iconHas: {fileID: 21300000, guid: f2e1e19576283234daac39a5bde1f95d, type: 3}
-  iconNoHas: {fileID: 21300000, guid: 7e901f63a44f5a34f9def8c5531a7c7d, type: 3}
+  icon: {fileID: 21300000, guid: a3996c0df0b544944a3b6b28b0844e93, type: 3}
   pack: 0
   index: 2
   has: 0
+  globalID: 2

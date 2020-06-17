@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
 
 
 	private void Update() {
+		if (reload == 0) return;
 		_timer += Time.deltaTime;
 		if(_timer >= reload) {
 			DoShoot();
@@ -43,11 +44,11 @@ public class Weapon : MonoBehaviour
 		}
 	}
 
-	private void DoShoot() {
-		GameObject go = Instantiate(prefabMissle);
+	public void DoShoot() {
+		GameObject go = Instantiate(prefabMissle, transform.position, transform.rotation);
 		go.transform.position = transform.position;
 		go.tag = entity.tag;
-		go.GetComponent<Missle>().SetInfo(speed, damage, transform.rotation.eulerAngles);
+		go.GetComponent<Missle>().SetInfo(speed, damage, entity.directon);
 	}
 
 	public void ResetTimer() {

@@ -25,24 +25,34 @@ public class SODataBehaviourEditor : Editor {
 		if (GUILayout.Button("+")) {
 			switch (ai._enum) {
 				case AI.sta.SimpleFly:
-					//SimpleFly s = CreateInstance<SimpleFly>();
-					//s.entity = ai.GetComponent<Entity>();
-					//id = 0;
-					//while (AssetDatabase.IsMainAssetAtPathLoaded(path(s))) {
-					//	id++;
-					//}
-					//AssetDatabase.CreateAsset(s, path(s));
-					//AssetDatabase.Refresh();
-					SimpleFly s = new SimpleFly();
+					SimpleFly s = CreateInstance<SimpleFly>();
+					id = 0;
+					while (AssetDatabase.IsMainAssetAtPathLoaded(path(s))) {
+						id++;
+					}
+					AssetDatabase.CreateAsset(s, path(s));
+					AssetDatabase.Refresh();
 					actions.Add(s);
 					break;
 				case AI.sta.Shoot:
-					//Shoot sh = CreateInstance<Shoot>();
-					//sh.entity = ai.GetComponent<Entity>();
-					//AssetDatabase.CreateAsset(sh, path(sh));
-					//AssetDatabase.Refresh();
-					Shoot sh = new Shoot();
+					Shoot sh = CreateInstance<Shoot>();
+					id = 0;
+					while (AssetDatabase.IsMainAssetAtPathLoaded(path(sh))) {
+						id++;
+					}
+					AssetDatabase.CreateAsset(sh, path(sh));
+					AssetDatabase.Refresh();
 					actions.Add(sh);
+					break;
+				case AI.sta.RootRandom:
+					RootRandom rR = CreateInstance<RootRandom>();
+					id = 0;
+					while (AssetDatabase.IsMainAssetAtPathLoaded(path(rR))) {
+						id++;
+					}
+					AssetDatabase.CreateAsset(rR, path(rR));
+					AssetDatabase.Refresh();
+					actions.Add(rR);
 					break;
 			}
 		}
@@ -64,6 +74,10 @@ public class SODataBehaviourEditor : Editor {
 				case "Shoot":
 					Shoot sh = (Shoot)i;
 					Editor.CreateEditor(sh).OnInspectorGUI();
+					break;
+				case "RootRandom":
+					RootRandom rr = (RootRandom)i;
+					Editor.CreateEditor(rr).OnInspectorGUI();
 					break;
 			}
 			EditorGUILayout.Space(10);

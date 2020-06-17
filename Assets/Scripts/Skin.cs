@@ -6,8 +6,7 @@ using UnityEngine;
 public class Skin : ScriptableObject
 {
 	public GameObject prefab;
-	public Sprite iconHas;
-	public Sprite iconNoHas;
+	public Sprite icon;
 	public int pack;
 	public int index;
 	public int has;

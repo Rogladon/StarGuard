@@ -37,6 +37,7 @@ public class Entity : MonoBehaviour {
 			return _lifes;
 		}
 		set {
+			if (shield) return;
 			_lifes = value;
 			if (player) {
 				events.lifeEvent.Invoke(_lifes);
@@ -85,7 +86,8 @@ public class Entity : MonoBehaviour {
 
 	public void DoHit(int damage) {
 		if (shield) return;
-		lifes -= damage;
+		else
+			lifes -= damage;
 	}
 
 	public void AddBonus(Bonus bonus) {
