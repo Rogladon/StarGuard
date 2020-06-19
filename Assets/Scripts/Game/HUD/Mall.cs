@@ -27,6 +27,9 @@ public class Mall : MonoBehaviour
 		InstItem(curPack);
 		InstSheep(GameManager.currentSkin);
 	}
+	private void OnDisable() {
+		DestroyDomain();
+	}
 
 
 	void InstItem(int pack) {
@@ -57,11 +60,15 @@ public class Mall : MonoBehaviour
 
 	public void InstSheep(Skin s) {
 
-		foreach(Transform i in domain) {
-			Destroy(i.gameObject);
-		}
+		DestroyDomain();
 		GameObject go = Instantiate(s.prefab, domain);
 		go.GetComponent<PlayerController>().enabled = false;
+	}
+
+	void DestroyDomain() {
+		foreach (Transform i in domain) {
+			Destroy(i.gameObject);
+		}
 	}
 
 	public void BySheep() {

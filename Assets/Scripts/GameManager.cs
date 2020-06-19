@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour {
 
 
 	private void Awake() {
+		InitializeEvent();
 		Upload();
 		DontDestroyOnLoad(this);
 		skins = new List<List<Skin>>();
@@ -51,6 +52,14 @@ public class GameManager : MonoBehaviour {
 				skins[i][j].index = j;
 			}
 		}
+		
+		//TOODO
+		events.choiceSkin.Invoke(player.pack, player.skins);
+
+		//TODOO
+	}
+
+	void InitializeEvent() {
 		events.choiceSkin.AddListener((int pack, int id) => {
 			player.skins = id;
 			player.pack = pack;
@@ -65,10 +74,6 @@ public class GameManager : MonoBehaviour {
 			player.coins += coins;
 			Save();
 		});
-		//TOODO
-		events.choiceSkin.Invoke(0, 0);
-
-		//TODOO
 	}
 
 	class OpenSkills {
