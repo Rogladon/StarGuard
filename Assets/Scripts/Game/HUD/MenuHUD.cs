@@ -9,24 +9,25 @@ public class MenuHUD : MonoBehaviour
 	public GameObject mainMenu;
 	public GameObject mall;
 	public Animator animatorDoor;
-	public class OpenMall : UnityEvent { }
-	public class CloseMall : UnityEvent { }
+	public class OpenDoor : UnityEvent { }
 
 	public class Events {
-		public OpenMall openDoor = new OpenMall();
+		public OpenDoor openDoor = new OpenDoor();
 	}
 	public static Events events = new Events();
-	public bool openMall = true;
+	public bool openMall = false;
 	private void Start() {
 		events.openDoor.AddListener(() => {
-			if (openMall) {
+			if (!openMall) {
+				Debug.Log("OpenMall");
 				mall.SetActive(true);
 				mainMenu.SetActive(false);
-				openMall = false;
+				openMall = true;
 			} else {
+				Debug.Log("CloseMall");
 				mall.SetActive(false);
 				mainMenu.SetActive(true);
-				openMall = true;
+				openMall = false;
 			}
 			animatorDoor.SetTrigger("Close");
 		});

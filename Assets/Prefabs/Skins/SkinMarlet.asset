@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkinMarlet
   m_EditorClassIdentifier: 
   prefab: {fileID: 6484565544239875837, guid: 6116cca9a36604a4cbf23ff6c692c782, type: 3}
-  icon: {fileID: -7004451253261790606, guid: 6c6710ad98ee6424abb6f5afc5c9dce0, type: 3}
+  icon: {fileID: 21300000, guid: 9e7244b0e25f6444198c4e86cad7e7a6, type: 3}
   pack: 0
   index: 0
   has: 0
