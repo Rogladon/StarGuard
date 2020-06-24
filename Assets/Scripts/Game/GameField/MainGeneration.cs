@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainGeneration : MonoBehaviour {
 	public EntityTimeDictionary Enemies = EntityTimeDictionary.New<EntityTimeDictionary>();
-	public Dictionary<Entity, float> enemies { get { return Enemies.dictionary; } }
+	public Dictionary<Entity, float> enemies = new Dictionary<Entity, float>();
 
 	public float k;
 	public float kSpeed;
@@ -135,6 +135,7 @@ public class MainGeneration : MonoBehaviour {
 	public float timeSpeed = 0;
 	public float _timer;
 	private void Update() {
+		Enemies.dictionary = enemies;
 		foreach(var i in enemies) {
 			entitySpeed[i.Key] += Time.deltaTime;
 		}

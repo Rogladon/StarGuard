@@ -14,7 +14,7 @@ public class Shoot : Action {
 			i.prefabMissle = prefabMissle;
 		}
 		ai.randomValue.Add(_timer, 0);
-		ai.randomValue.Add(timeShoot, Random.Range(minMaxTime.x, minMaxTime.y));
+		ai.randomValue.Add(timeShoot, 1);
 	}
 
 	public override void UpdateAction(AI ai) {

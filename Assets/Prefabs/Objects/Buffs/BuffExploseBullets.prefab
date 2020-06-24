@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameBuff: exploseBullet
-  timeLife: Infinity
+  timeLife: 10
   typeMissle: {fileID: 2210654585186509645, guid: c3efac3e408d7d34898041583aacaf0d,
     type: 3}

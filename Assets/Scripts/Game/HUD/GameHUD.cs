@@ -9,19 +9,27 @@ public class GameHUD : MonoBehaviour {
 	public Text textCoin;
 	public GameObject pauseMenu;
 	public GameObject deathMenu;
+	public Text stage;
+	public Text num;
+	public Transform barSheep;
+	public GameObject bar;
 	private Entity entity;
 	Transform cam;
 
 
 	[Header("Prefabs")]
 	public GameObject lifeIcon;
+	
 
 	public float ShakeFactor = 2f;
+	public float timeStartNums = 1f;
 
 	float shakeTimer = 0;
 	float shakeAmplitude = 0.25f;
 	float maxShakeAmplitude { get { return shakeAmplitude * 4; } }
 	float shakeTimerDecrisePercent = 0.5f;
+	bool startLevel = false;
+	bool startBar = false;
 
 
 	private List<GameObject> lifesGO = new List<GameObject>();
@@ -59,10 +67,33 @@ public class GameHUD : MonoBehaviour {
 	public void StartShakeCamera(float factor = 1f) {
 		shakeTimer = shakeAmplitude * factor;
 	}
-
+	private int nums = 3;
+	private float _time;
+	private float speedSizes;
+	private float speedBar;
 	private void Update() {
 		ShakeCamera();
 		textCoin.text = entity.coins.ToString();
+		if (startLevel) {
+			_time += Time.deltaTime;
+			num.transform.localScale += Vector3.one * speedSizes*Time.deltaTime;
+			if(_time >= timeStartNums) {
+				if(nums == 1) {
+					PlayManager.events.startGame.Invoke();
+					startLevel = false;
+					stage.gameObject.SetActive(false);
+					num.gameObject.SetActive(false);
+					return;
+				}
+				_time = 0;
+				nums--;
+				num.text = nums.ToString();
+				num.transform.localScale = Vector3.one;
+			}
+		}
+		if (startBar) {
+			barSheep.position += Vector3.up * speedBar*Time.deltaTime;
+		}
 	}
 
 	public void Pause() {
@@ -84,10 +115,25 @@ public class GameHUD : MonoBehaviour {
 		GameManager.LoadLevel();
 	}
 	public void Back() {
-		if (entity) {
-			GameManager.events.endGame.Invoke(entity.coins);
-		}
+		//if (entity) {
+		//	GameManager.events.endGame.Invoke(entity.coins);
+		//}
 		Continue();
 		GameManager.BackMenu();
+	}
+	public void StartLevel(int level) {
+		stage.gameObject.SetActive(true);
+		stage.text = "STAGE " + level.ToString();
+		num.gameObject.SetActive(true);
+		_time = 0;
+		startLevel = true;
+		nums = 3;
+		num.transform.localScale = Vector3.one;
+		speedSizes = (1f) / timeStartNums;
+	}
+	public void StartBar(float sizeLevel) {
+		float size = bar.GetComponent<BoxCollider2D>().size.y*bar.transform.localScale.y;
+		speedBar = size / sizeLevel;
+		startBar = true;
 	}
 }

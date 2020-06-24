@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 	private Entity entity;
 	private Transform cam;
 	public Transform c;
+	public bool lockMove = true;
 	
 
 	private void Start() {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void Update() {
+		if (lockMove) return;
 		if (InputHelper.isTapped) {
 			delta = NewDelta();
 		}

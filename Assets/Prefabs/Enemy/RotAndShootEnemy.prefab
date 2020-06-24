@@ -57,7 +57,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1097848299845005292}
+  - {fileID: 1774251398362381669}
   - {fileID: 7127268211478675192}
   - {fileID: 5833594566626100976}
   m_Father: {fileID: 6041501669793901046}
@@ -361,12 +361,13 @@ MonoBehaviour:
   speed: 1.5
   kReload: 1
   staticWeapons:
-  - {fileID: 1097848299845005221}
+  - {fileID: 7058703120073957326}
   buffsDomain: {fileID: 2363667492597506976}
   weaponsDomain: {fileID: 6640725909997226416}
   TypeMissles:
-    keys: 
-    values: []
+    keys: 00000000
+    values:
+    - {fileID: 327317267919010696, guid: e1fa7d81e2fc2a74392dedb2a8056500, type: 3}
   left: {fileID: 7127268211478675192}
   right: {fileID: 5833594566626100976}
   weapons: []
@@ -545,13 +546,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed6a0a658b1300d4d8f702301536db5b, type: 3}
---- !u!4 &1097848299845005292 stripped
+--- !u!4 &1774251398362381669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1703274393509434037, guid: ed6a0a658b1300d4d8f702301536db5b,
     type: 3}
   m_PrefabInstance: {fileID: 1097848299845005264}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1097848299845005221 stripped
+--- !u!114 &7058703120073957326 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7983151647737262110, guid: ed6a0a658b1300d4d8f702301536db5b,
     type: 3}

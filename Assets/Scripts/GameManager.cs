@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 	public class ChoiceSkin : UnityEvent<int, int> { }
 	public class BySkin : UnityEvent<int, int> { }
-	public class EndGame : UnityEvent<int> { }
+	public class CompleteLevel : UnityEvent<int> { }
 	public class Events {
 		public ChoiceSkin choiceSkin = new ChoiceSkin();
 		public BySkin bySkin = new BySkin();
-		public EndGame endGame = new EndGame();
+		public CompleteLevel completeLEvel = new CompleteLevel();
 	}
 	public static Events events = new Events();
 	public class Player {
@@ -70,8 +70,10 @@ public class GameManager : MonoBehaviour {
 			openSkins.Add(skins[pack][id].globalID);
 			Save();
 		});
-		events.endGame.AddListener((int coins) => {
+		events.completeLEvel.AddListener((int coins) => {
 			player.coins += coins;
+			player.level += 1;
+			LoadLevel();
 			Save();
 		});
 	}
@@ -117,6 +119,13 @@ public class GameManager : MonoBehaviour {
 	[ContextMenu("DeleteAllSheeps")]
 	void DeleteAllSheep() {
 		PlayerPrefs.DeleteKey("openSkins");
+	}
+
+	[ContextMenu("DeleteLevel")]
+	void DeleteLevel() {
+		Upload();
+		player.level = 0;
+		Save();
 	}
 
 }

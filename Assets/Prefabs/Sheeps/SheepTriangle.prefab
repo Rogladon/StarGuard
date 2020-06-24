@@ -184,6 +184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kAngle: 100
   t: 0.5
+  edgeCamera: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
+  delta: {x: 0, y: 0, z: 0}
+  c: {fileID: 0}
+  borderField: 0
 --- !u!50 &4432811489001141813
 Rigidbody2D:
   serializedVersion: 4

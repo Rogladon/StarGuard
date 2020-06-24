@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu]
 abstract public class Buff : MonoBehaviour {
 	public string nameBuff;
 	public float timeLife;

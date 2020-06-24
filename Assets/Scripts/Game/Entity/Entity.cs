@@ -143,10 +143,6 @@ public class Entity : MonoBehaviour {
 
 	private void OnDestroyThis() {
 		Destroy(gameObject);
-		if (player) {
-			GameManager.events.endGame.Invoke(coins);
-			return;
-		}
 		for (int i = 0; i < coins; i++) {
 			GameObject go = Instantiate(PlayManager.coinPrefab);
 			go.transform.position = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);

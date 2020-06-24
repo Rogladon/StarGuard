@@ -31,7 +31,9 @@ public class Weapon : MonoBehaviour
 	public void Awake() {
 		entity = GetComponentInParent<Entity>();
 		reload *= entity.kReload;
-		prefabMissle = entity.missles[typeMissle];
+		if (entity.missles.ContainsKey(typeMissle)) {
+			prefabMissle = entity.missles[typeMissle];
+		}
 	}
 
 

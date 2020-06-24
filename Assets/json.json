@@ -1,0 +1,48 @@
+{
+  "stages":[
+    {
+      "id": 1,
+      "sheeps": [
+        0
+      ],
+      "precents": [
+        100
+      ],
+      "kTime": 300,
+      "kSpeed": 300,
+      "size": 60
+    },
+    {
+      "id": 2,
+      "sheeps": [
+        0,
+        1
+      ],
+      "precents": [
+        50,
+        50
+      ],
+      "kTime": 200,
+      "kSpeed": 200,
+      "size": 60
+    },
+    {
+      "id": 3,
+      "sheeps": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "precents": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "kTime": 300,
+      "kSpeed": 300,
+      "size": 9999999
+    }
+  ]
+}
