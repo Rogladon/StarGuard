@@ -9,6 +9,7 @@ public class Entity : MonoBehaviour {
 	public int maxLifes;
 	public float speed;
 	public float kReload = 1;
+	public Weapon.TypeMissle defaulTypeMIssle;
 
 	[Header("Components")]
 	public List<Weapon> staticWeapons;
@@ -24,7 +25,7 @@ public class Entity : MonoBehaviour {
 	[SerializeField]
 	public List<Weapon> weapons;
 	[SerializeField]
-	private List<Buff> buffs;
+	public List<Buff> buffs;
 
 	[Header("Other")]
 	[SerializeField]

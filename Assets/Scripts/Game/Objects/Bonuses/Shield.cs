@@ -23,7 +23,9 @@ public class Shield : Buff {
 	}
 
 	protected override void OnDestroy() {
-		entity.shield = false;
+		if (!constains) {
+			entity.shield = false;
+		}
 		Destroy(go);
 	}
 }

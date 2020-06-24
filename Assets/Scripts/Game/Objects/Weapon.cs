@@ -12,7 +12,6 @@ public class Weapon : MonoBehaviour
 	public int damage;
 	public float reload;
 	public float speed;
-	public TypeMissle typeMissle;
 
 	[Header("Components")]
 	public Entity entity;
@@ -31,8 +30,10 @@ public class Weapon : MonoBehaviour
 	public void Awake() {
 		entity = GetComponentInParent<Entity>();
 		reload *= entity.kReload;
-		if (entity.missles.ContainsKey(typeMissle)) {
-			prefabMissle = entity.missles[typeMissle];
+		if (!prefabMissle) {
+			if (entity.missles.ContainsKey(entity.defaulTypeMIssle)) {
+				prefabMissle = entity.missles[entity.defaulTypeMIssle];
+			} 
 		}
 	}
 

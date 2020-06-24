@@ -13,6 +13,7 @@ public class EplosiveBullets : Buff {
 		foreach (var i in entity.staticWeapons) {
 			i.prefabMissle = typeMissle;
 		}
+		
 	}
 
 	protected override void ActionUpdate() {
@@ -27,6 +28,13 @@ public class EplosiveBullets : Buff {
 	}
 
 	protected override void OnDestroy() {
-		
+		if (!constains) {
+			foreach (var i in entity.weapons) {
+				i.prefabMissle = entity.missles[entity.defaulTypeMIssle];
+			}
+			foreach (var i in entity.staticWeapons) {
+				i.prefabMissle = entity.missles[entity.defaulTypeMIssle];
+			}
+		}
 	}
 }
