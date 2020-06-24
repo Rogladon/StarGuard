@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	
 
 	private void Start() {
+		AudioManager.events.gameTrack.Invoke();
 		cam = Camera.main.transform;
 		entity = GetComponent<Entity>();
 		rigid = GetComponent<Rigidbody2D>();

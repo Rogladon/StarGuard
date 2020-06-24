@@ -261,8 +261,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5350293800734835641}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -0.112, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.011, y: -0.839, z: 0}
   m_LocalScale: {x: 0.72768563, y: 0.41768563, z: 0.19890884}
   m_Children: []
   m_Father: {fileID: 2951914306545739161}
@@ -399,7 +399,7 @@ MonoBehaviour:
   TypeMissles:
     keys: 00000000
     values:
-    - {fileID: 327317267919010696, guid: e1fa7d81e2fc2a74392dedb2a8056500, type: 3}
+    - {fileID: 1100783566752345760, guid: e1fa7d81e2fc2a74392dedb2a8056500, type: 3}
   left: {fileID: 8758488249899218551}
   right: {fileID: 5444945804321590911}
   weapons: []
@@ -453,7 +453,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -468,15 +468,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.007404523, y: 1.525885}
-      - {x: -0.73632723, y: 0.93119067}
-      - {x: -1.5207477, y: -0.22387749}
-      - {x: -1.5778158, y: -1.1948236}
-      - {x: -0.24610358, y: -0.7847027}
-      - {x: 0.40082934, y: -0.7869447}
-      - {x: 1.5794299, y: -1.186798}
-      - {x: 1.594792, y: -0.26831838}
-      - {x: 0.76594496, y: 0.87193626}
+    - - {x: -0.018450841, y: -1.5681033}
+      - {x: -0.73632735, y: -0.8810026}
+      - {x: -1.5870265, y: 0.26232103}
+      - {x: -1.5778158, y: 1.2582662}
+      - {x: -0.32342872, y: 0.9611912}
+      - {x: 0.3787365, y: 0.96999925}
+      - {x: 1.5241979, y: 1.1778926}
+      - {x: 1.5837458, y: 0.23998052}
+      - {x: 0.67757404, y: -0.9071072}
 --- !u!1001 &1466226465916151647
 PrefabInstance:
   m_ObjectHideFlags: 0

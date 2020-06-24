@@ -360,6 +360,7 @@ MonoBehaviour:
   maxLifes: 27
   speed: 1.5
   kReload: 1
+  defaulTypeMIssle: 0
   staticWeapons:
   - {fileID: 7058703120073957326}
   buffsDomain: {fileID: 2363667492597506976}
@@ -367,7 +368,7 @@ MonoBehaviour:
   TypeMissles:
     keys: 00000000
     values:
-    - {fileID: 327317267919010696, guid: e1fa7d81e2fc2a74392dedb2a8056500, type: 3}
+    - {fileID: 1100783566752345760, guid: e1fa7d81e2fc2a74392dedb2a8056500, type: 3}
   left: {fileID: 7127268211478675192}
   right: {fileID: 5833594566626100976}
   weapons: []

@@ -1,13 +1,13 @@
 using System;
  
 using UnityEngine;
- 
+
 
 // ---------------
-//  WeaponType => GameObject
+//  WeaponType => Missle
 // ---------------
 [Serializable]
-public class MissleTypeGameObjectDictionary : SerializableDictionary<Weapon.TypeMissle, GameObject> { }
+public class MissleTypeGameObjectDictionary : SerializableDictionary<Weapon.TypeMissle, Missle> { }
 
 
 // ---------------
@@ -29,3 +29,9 @@ public class BonusIntDictionary : SerializableDictionary<Bonus, int> { }
 // ---------------
 [Serializable]
 public class GameObjectFloatDictionary : SerializableDictionary<string, float> { }
+
+// ---------------
+//  TypeTRack => AudioTrack
+// ---------------
+[Serializable]
+public class TypeAudioTrackDictionary : SerializableDictionary<AudioManager.TypeTrack, AudioClip> { }

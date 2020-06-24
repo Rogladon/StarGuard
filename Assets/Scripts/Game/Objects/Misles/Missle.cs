@@ -7,7 +7,7 @@ public class Missle : MonoBehaviour
 	protected float speed;
 	protected int damage;
 	protected Vector2 dir;
-
+	public Weapon.TypeMissle typeMissle;
 
 	public void SetInfo(float speed, int damage, Vector2 dir) {
 		this.speed = speed;

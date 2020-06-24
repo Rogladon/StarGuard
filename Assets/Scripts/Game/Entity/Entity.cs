@@ -16,7 +16,7 @@ public class Entity : MonoBehaviour {
 	public Transform buffsDomain;
 	public Transform weaponsDomain;
 	public MissleTypeGameObjectDictionary TypeMissles = MissleTypeGameObjectDictionary.New<MissleTypeGameObjectDictionary>();
-	public Dictionary<Weapon.TypeMissle, GameObject> missles { get { return TypeMissles.dictionary; } }
+	public Dictionary<Weapon.TypeMissle, Missle> missles { get { return TypeMissles.dictionary; } }
 	public Transform left;
 	public Transform right;
 	private PlayerController pc;
@@ -89,6 +89,7 @@ public class Entity : MonoBehaviour {
 		if (shield) return;
 		else
 			lifes -= damage;
+		AudioManager.events.hit.Invoke();
 	}
 
 	public void AddBonus(Bonus bonus) {
@@ -144,6 +145,7 @@ public class Entity : MonoBehaviour {
 
 	private void OnDestroyThis() {
 		Destroy(gameObject);
+		if (player) return;
 		for (int i = 0; i < coins; i++) {
 			GameObject go = Instantiate(PlayManager.coinPrefab);
 			go.transform.position = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);

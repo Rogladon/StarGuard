@@ -6,15 +6,15 @@ using UnityEditor;
 #if UNITY_EDITOR
 
 // ---------------
-//  WeaponType => GameObject
+//  WeaponType => Missle
 // ---------------
 [UnityEditor.CustomPropertyDrawer(typeof(MissleTypeGameObjectDictionary))]
-public class MissleTypeGameObjectDictionaryDrawer : SerializableDictionaryDrawer<Weapon.TypeMissle, GameObject> {
-	protected override SerializableKeyValueTemplate<Weapon.TypeMissle, GameObject> GetTemplate() {
+public class MissleTypeGameObjectDictionaryDrawer : SerializableDictionaryDrawer<Weapon.TypeMissle, Missle> {
+	protected override SerializableKeyValueTemplate<Weapon.TypeMissle, Missle> GetTemplate() {
 		return GetGenericTemplate<MissleTypeGameObjectDictionaryTemplate>();
 	}
 }
-internal class MissleTypeGameObjectDictionaryTemplate : SerializableKeyValueTemplate<Weapon.TypeMissle, GameObject> { }
+internal class MissleTypeGameObjectDictionaryTemplate : SerializableKeyValueTemplate<Weapon.TypeMissle, Missle> { }
 
 
 // ---------------
@@ -48,6 +48,18 @@ public class GameObjectFloatDictionaryDrawer : SerializableDictionaryDrawer<stri
 	}
 }
 internal class GameObjectFloatDictionaryTemplate : SerializableKeyValueTemplate<string, float> { }
+
+
+// ---------------
+//  TypeTrack => AudioTrack
+// ---------------
+[UnityEditor.CustomPropertyDrawer(typeof(TypeAudioTrackDictionary))]
+public class TypeAudioTrackDictionaryDrawer : SerializableDictionaryDrawer<AudioManager.TypeTrack, AudioClip> {
+	protected override SerializableKeyValueTemplate<AudioManager.TypeTrack, AudioClip> GetTemplate() {
+		return GetGenericTemplate<TypeAudioTrackDictionaryTemplate>();
+	}
+}
+internal class TypeAudioTrackDictionaryTemplate : SerializableKeyValueTemplate<AudioManager.TypeTrack, AudioClip> { }
 
 
 

@@ -17,6 +17,7 @@ public class MenuHUD : MonoBehaviour
 	public static Events events = new Events();
 	public bool openMall = false;
 	private void Start() {
+		AudioManager.events.mainMenuTrack.Invoke();
 		events.openDoor.AddListener(() => {
 			if (!openMall) {
 				Debug.Log("OpenMall");

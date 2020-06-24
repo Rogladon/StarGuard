@@ -1761,7 +1761,7 @@ MonoBehaviour:
   lifeIcon: {fileID: 6862116674379039660, guid: a55fe96f0494ae54bb90f2e8d03e0544,
     type: 3}
   ShakeFactor: 2
-  timeStartNums: 1
+  timeStartNums: 0.8
 --- !u!1 &974521153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3744,7 +3744,7 @@ MonoBehaviour:
     - {fileID: 8690981188451960382, guid: 51a843a27ce9c6f4f9d71dade3f5b2f8, type: 3}
     - {fileID: 7368672873056196427, guid: 3def969ba11a8c54c9f9e02ca756516f, type: 3}
     - {fileID: 7101071003333612608, guid: 2613616307e6b764f9ff8a13a908db3f, type: 3}
-    values: 04000000040000000a00000002000000
+    values: 0a000000080000001400000004000000
   _speed: 1
   _coinPrefab: {fileID: 8933974368787554881, guid: 38e8832a194a72d418578acc4f7b3401,
     type: 3}

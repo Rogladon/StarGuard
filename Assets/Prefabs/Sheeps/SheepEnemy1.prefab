@@ -176,8 +176,8 @@ MonoBehaviour:
   TypeMissles:
     keys: 0000000001000000
     values:
-    - {fileID: 4797781167882412586, guid: e4036b500a823ee48b5b7afeceb01afb, type: 3}
-    - {fileID: 2210654585186509645, guid: c3efac3e408d7d34898041583aacaf0d, type: 3}
+    - {fileID: 5285322764147046146, guid: e4036b500a823ee48b5b7afeceb01afb, type: 3}
+    - {fileID: 837403052920287195, guid: c3efac3e408d7d34898041583aacaf0d, type: 3}
   left: {fileID: 4566634592773942836}
   right: {fileID: 4566634594045035291}
   weapons: []
@@ -250,15 +250,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.009967804, y: 0.43223917}
-      - {x: -0.24103004, y: 0.24080774}
-      - {x: -0.44225746, y: -0.08261242}
-      - {x: -0.43842518, y: -0.3529442}
-      - {x: -0.11094017, y: -0.25307906}
-      - {x: 0.17034689, y: -0.2521149}
-      - {x: 0.4457965, y: -0.33847526}
-      - {x: 0.45416448, y: -0.06780497}
-      - {x: 0.24936664, y: 0.24081862}
+    - - {x: 0.006055489, y: -0.42482454}
+      - {x: -0.22146863, y: -0.23272976}
+      - {x: -0.45008212, y: 0.08958302}
+      - {x: -0.43842518, y: 0.33975118}
+      - {x: -0.1852735, y: 0.14218783}
+      - {x: 0.1742592, y: 0.16271964}
+      - {x: 0.44188416, y: 0.34639296}
+      - {x: 0.44633985, y: 0.09656342}
+      - {x: 0.23371755, y: -0.24445945}
 --- !u!1 &4566634592773942837
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,8 +637,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8835668255302640266}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0545, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.246, z: 0}
   m_LocalScale: {x: 0.191, y: 0.1507372, z: 0.191}
   m_Children: []
   m_Father: {fileID: 8461725456253961705}

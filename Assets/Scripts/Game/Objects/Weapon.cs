@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
 
 	[Header("Components")]
 	public Entity entity;
-	public GameObject prefabMissle;
+	public Missle prefabMissle;
 
 	public Vector2 position {
 		get {
@@ -48,7 +48,10 @@ public class Weapon : MonoBehaviour
 	}
 
 	public void DoShoot() {
-		GameObject go = Instantiate(prefabMissle, transform.position, transform.rotation);
+		if (entity.player) {
+			AudioManager.events.playerShoot.Invoke((int)prefabMissle.typeMissle);
+		}
+		GameObject go = Instantiate(prefabMissle.gameObject, transform.position, transform.rotation);
 		go.transform.position = transform.position;
 		go.tag = entity.tag;
 		go.GetComponent<Missle>().SetInfo(speed, damage, entity.directon);

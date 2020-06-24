@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameBuff: speedShoot
   timeLife: 10
-  factorSpeed: 2
+  factorSpeed: 1.5

@@ -276,6 +276,7 @@ MonoBehaviour:
   maxLifes: 3
   speed: 0
   kReload: 1
+  defaulTypeMIssle: 1
   staticWeapons:
   - {fileID: 6763525779023129335}
   buffsDomain: {fileID: 1787695429709978552}
@@ -283,8 +284,8 @@ MonoBehaviour:
   TypeMissles:
     keys: 0000000001000000
     values:
-    - {fileID: 4797781167882412586, guid: e4036b500a823ee48b5b7afeceb01afb, type: 3}
-    - {fileID: 2210654585186509645, guid: c3efac3e408d7d34898041583aacaf0d, type: 3}
+    - {fileID: 5285322764147046146, guid: e4036b500a823ee48b5b7afeceb01afb, type: 3}
+    - {fileID: 837403052920287195, guid: c3efac3e408d7d34898041583aacaf0d, type: 3}
   left: {fileID: 1787695431071577734}
   right: {fileID: 1787695429798960041}
   weapons: []
@@ -309,6 +310,7 @@ MonoBehaviour:
   endPosition: {x: 0, y: 0, z: 0}
   delta: {x: 0, y: 0, z: 0}
   c: {fileID: 0}
+  lockMove: 1
   borderField: 0
 --- !u!50 &1787695430541495486
 Rigidbody2D:

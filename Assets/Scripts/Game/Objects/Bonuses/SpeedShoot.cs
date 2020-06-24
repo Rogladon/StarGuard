@@ -6,6 +6,10 @@ public class SpeedShoot : Buff {
 	public float factorSpeed;
 	List<Weapon> weapons = new List<Weapon>();
 	protected override void Action() {
+		if (constains) {
+			factorSpeed = 1+ ((factorSpeed-1)/2);
+			timeLife /= 2;
+		}
 		weapons = ListUtilits.CopyTo(entity.weapons);
 		foreach(var i in weapons) {
 			i.reload /= factorSpeed;
