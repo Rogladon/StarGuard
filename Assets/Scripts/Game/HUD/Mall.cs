@@ -72,17 +72,19 @@ public class Mall : MonoBehaviour
 	}
 
 	public void BySheep() {
-		GameManager.player.coins -= price;
-		textMoney.text = GameManager.player.coins.ToString();
-		choiceWindow.SetActive(true);
-		_time = startTime;
+		if (GameManager.player.coins < price) return;
 		closeItems = new List<Item>();
-		foreach(var i in items) {
+		foreach (var i in items) {
 			if (!i.has) {
 				closeItems.Add(i);
 			}
 		}
-		if(closeItems.Count > 0) btnBy.interactable = false;
+		if (closeItems.Count == 0) return;
+		GameManager.player.coins -= price;
+		textMoney.text = GameManager.player.coins.ToString();
+		choiceWindow.SetActive(true);
+		_time = startTime;
+		
 		ChoiceBy();
 	}
 	List<Item> closeItems;

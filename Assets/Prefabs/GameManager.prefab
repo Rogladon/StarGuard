@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5291438344109752754}
   - component: {fileID: 5291438344109752755}
+  - component: {fileID: 205487197}
+  - component: {fileID: 205487198}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,4 +46,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skins:
-  - {fileID: -6693480479894843104, guid: 2bfdcaab061aa72458c767d51412342b, type: 3}
+  - {fileID: 11400000, guid: c5b0aaff74d01ad41a5f3d378599bf1e, type: 2}
+  - {fileID: 11400000, guid: 241b4597ecdd0d04489c21591397f9cc, type: 2}
+  - {fileID: 11400000, guid: e89e79026ea857c46849dfd6354dca70, type: 2}
+--- !u!114 &205487197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291438344109752752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2137a030eb626340a9b403a1b8aaa3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  json: {fileID: 4900000, guid: a56ef7ccad62f9648938bba9816246d7, type: 3}
+--- !u!114 &205487198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291438344109752752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba7cc6088ab90144a9741558f78d3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemies:
+  - {fileID: 5211063951735623484, guid: 91f5cf9f0070d2e4c8313b00316bc658, type: 3}
+  - {fileID: 4467974486459952622, guid: 7c2059623f8ea3f49bb85c37658e369f, type: 3}
+  - {fileID: 2897494138054202929, guid: 3e7259d2223ed7b4d98b1f45b63b530c, type: 3}
+  - {fileID: 5995462133401896883, guid: ef3016773297f184d952a866851e774a, type: 3}

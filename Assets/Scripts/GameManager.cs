@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour {
 			_skins[i].globalID = i;
 			if (openSkins.Contains(i)) {
 				_skins[i].has = 1;
+			} else {
+				_skins[i].has = 0;
 			}
 			skins[_skins[i].pack].Add(_skins[i]);
 		}
