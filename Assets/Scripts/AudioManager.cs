@@ -37,7 +37,8 @@ public class AudioManager : MonoBehaviour
 		InitilizeEvents();
 
 	}
-
+	float _time;
+	float maxTimeShoot = 0.1f;
 	void InitilizeEvents() {
 		events.gameTrack.AddListener(() => {
 			audioSource.clip = typeAudioTrack[TypeTrack.gameTrack];
@@ -49,8 +50,13 @@ public class AudioManager : MonoBehaviour
 			audioSource.Play();
 		});
 		events.playerShoot.AddListener((int type) => {
+			if (_time < maxTimeShoot) return;
+			_time = 0;
 			switch (type) {
 				case 0:
+					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot], 0.5f);
+					break;
+				default:
 					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot], 0.5f);
 					break;
 			}
@@ -59,5 +65,9 @@ public class AudioManager : MonoBehaviour
 		events.hit.AddListener(() => {
 			audioSource.PlayOneShot(typeAudioTrack[TypeTrack.hit],0.5f);
 		});
+	}
+
+	private void Update() {
+		_time += Time.deltaTime;
 	}
 }
