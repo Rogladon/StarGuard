@@ -570,7 +570,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeapomTest
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3159890285640000435, guid: ed6a0a658b1300d4d8f702301536db5b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed6a0a658b1300d4d8f702301536db5b, type: 3}
 --- !u!4 &8478640011014362936 stripped
 Transform:

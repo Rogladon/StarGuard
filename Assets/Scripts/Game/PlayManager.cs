@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class PlayManager : MonoBehaviour
 {
+	public static bool testPlay;
 	public class StartGame : UnityEvent { }
 
 	public class Events {
@@ -55,19 +56,30 @@ public class PlayManager : MonoBehaviour
 	}
 
 	void StartLevel() {
-		int l = GameManager.player.level;
+		int l;
+		if (testPlay) {
+			l = LevelStateEditor.levelID;
+		} else {
+			l = GameManager.player.level;
+		}
 		LevelManager.Stage stage = LevelManager.stages.stages[l];
 		for (int i = 0; i < stage.sheeps.Count; i++) {
 			Entity entity = Enemies.enemies[stage.sheeps[i]];
 			float precent = 0;
+			float speed = 1;
 			if(stage.precents.Count < i) {
 				precent = stage.precents[i];
 			}
+			//if (stage.speedShips.Count < i) {
+				speed = stage.speedShips[i];
+			//}
 			generate.enemies.Add(entity, precent);
+			generate.speedEnemies.Add(entity, speed);
 		}
 		sizeLevel = stage.size;
 		generate.k = stage.kTime;
 		generate.kSpeed = stage.kSpeed;
+		generate.avengerTime = stage.startTime;
 		if (entityPlayer) {
 			Destroy(entityPlayer.gameObject);
 		}

@@ -52,4 +52,7 @@ public class MenuHUD : MonoBehaviour
 	public void Mall() {
 		animatorDoor.SetTrigger("Open");
 	}
+	public void LevelEditor() {
+		SceneManager.LoadScene(3);
+	}
 }

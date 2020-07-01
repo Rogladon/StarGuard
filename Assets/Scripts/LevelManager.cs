@@ -11,9 +11,11 @@ public class LevelManager : MonoBehaviour
 		public int id;
 		public List<int> sheeps = new List<int>();
 		public List<int> precents = new List<int>();
+		public List<float> speedShips = new List<float>();
 		public int kTime;
 		public int kSpeed;
 		public int size;
+		public float startTime;
 	}
 	[SerializeField]
 	[System.Serializable]
@@ -25,7 +27,20 @@ public class LevelManager : MonoBehaviour
 
 	public TextAsset json;
 	public void Awake() {
-		stages = JsonUtility.FromJson<Stages>(json.text);
-		Debug.Log(stages.stages[0].id);
+		if (PlayerPrefs.HasKey("LevelJson")) {
+			stages = JsonUtility.FromJson<Stages>(PlayerPrefs.GetString("LevelJson"));
+		} else {
+			stages = JsonUtility.FromJson<Stages>(json.text);
+
+		}
+	}
+
+	public static void SaveLevelJson() {
+		string str = JsonUtility.ToJson(stages);
+		PlayerPrefs.SetString("LevelJson", str);
+	}
+	[ContextMenu("DeleteLevel")]
+	void DeleteLevels() {
+		PlayerPrefs.DeleteKey("LevelJson");
 	}
 }

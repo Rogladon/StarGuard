@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator start() {
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(0);
 		SceneManager.LoadScene(1);
 	}
 
@@ -119,7 +119,11 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene(2);
 	}
 	public static void BackMenu() {
-		SceneManager.LoadScene(1);
+		if (PlayManager.testPlay) {
+			SceneManager.LoadScene(4);
+		} else {
+			SceneManager.LoadScene(1);
+		}
 	}
 
 

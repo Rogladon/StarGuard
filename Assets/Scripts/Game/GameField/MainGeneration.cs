@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainGeneration : MonoBehaviour {
 	public EntityTimeDictionary Enemies = EntityTimeDictionary.New<EntityTimeDictionary>();
 	public Dictionary<Entity, float> enemies = new Dictionary<Entity, float>();
-
+	public Dictionary<Entity, float> speedEnemies = new Dictionary<Entity, float>();
 	public float k;
 	public float kSpeed;
 	public float avengerTime;
@@ -120,6 +120,8 @@ public class MainGeneration : MonoBehaviour {
 	private void Start() {
 		area = new AreaCreate(AreaCreate.Area.up);
 		foreach(var i in enemies) {
+			i.Key.speed = speedEnemies[i.Key];
+			Debug.Log(i.Key.speed);
 			entitySpeed.Add(i.Key, kSpeed / i.Key.speed);
 		}
 		//foreach(var i in enemies) {
