@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RotAndShootEnemyRootRandom0
   m_EditorClassIdentifier: 
   minMaxDir: {x: -30, y: 30}
-  speedRoot: 0
+  speedRoot: 5

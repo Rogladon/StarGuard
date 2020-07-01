@@ -34,26 +34,30 @@ public class AudioManager : MonoBehaviour
 	public void Awake() {
 		DontDestroyOnLoad(this);
 		audioSource = GetComponent<AudioSource>();
-		
+		InitilizeEvents();
+
 	}
 
 	void InitilizeEvents() {
 		events.gameTrack.AddListener(() => {
 			audioSource.clip = typeAudioTrack[TypeTrack.gameTrack];
+			audioSource.loop = true;
+			audioSource.Play();
 		});
 		events.mainMenuTrack.AddListener(() => {
 			audioSource.clip = typeAudioTrack[TypeTrack.mainMenuTrack];
+			audioSource.Play();
 		});
 		events.playerShoot.AddListener((int type) => {
 			switch (type) {
 				case 0:
-					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot]);
+					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot], 0.5f);
 					break;
 			}
 
 		});
 		events.hit.AddListener(() => {
-			audioSource.PlayOneShot(typeAudioTrack[TypeTrack.hit]);
+			audioSource.PlayOneShot(typeAudioTrack[TypeTrack.hit],0.5f);
 		});
 	}
 }

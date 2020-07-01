@@ -105,9 +105,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Start() {
-		SceneManager.LoadScene(1);
+
+		StartCoroutine(start());
 	}
 
+	IEnumerator start() {
+		yield return new WaitForSeconds(5);
+		SceneManager.LoadScene(1);
+	}
 
 	public static void LoadLevel() {
 		//TOODO

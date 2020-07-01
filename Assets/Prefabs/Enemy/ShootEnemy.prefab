@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   maxLifes: 27
-  speed: 1.5
+  speed: 1.3
   kReload: 1
   defaulTypeMIssle: 0
   staticWeapons:
@@ -531,6 +531,12 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 2897494138054202929}
+    - target: {fileID: 7983151647737262110, guid: ed6a0a658b1300d4d8f702301536db5b,
+        type: 3}
+      propertyPath: prefabMissle
+      value: 
+      objectReference: {fileID: 1100783566752345760, guid: e1fa7d81e2fc2a74392dedb2a8056500,
+        type: 3}
     - target: {fileID: 9037007630119863236, guid: ed6a0a658b1300d4d8f702301536db5b,
         type: 3}
       propertyPath: m_Name

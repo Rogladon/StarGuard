@@ -8,12 +8,7 @@ public class EplosiveBullets : Buff {
 	List<Weapon> weapons;
 	protected override void Action() {
 		if (constains) {
-			foreach(var i in entity.buffs) {
-				if(i.GetType() == this.GetType()) {
-					i.timeLife += timeLife / 2;
-					entity.RemoveBuff(this);
-				}
-			}
+			factorDamage = 0;
 		}
 		weapons = ListUtilits.CopyTo(entity.weapons);
 		foreach (var i in weapons) {

@@ -42,7 +42,7 @@ public class MainGeneration : MonoBehaviour {
 					pos.z = 0;
 					break;
 				case Area.up:
-					pos.y = up + 1;
+					pos.y = up + 0.5f;
 					pos.x = Random.Range(left, right);
 					pos.z = 0;
 					break;
@@ -68,7 +68,7 @@ public class MainGeneration : MonoBehaviour {
 					pos.z = 0;
 					break;
 				case Area.up:
-					pos.y = up + 1;
+					pos.y = up + 0.5f;
 					pos.x = Random.Range(left, right);
 					pos.z = 0;
 					break;
