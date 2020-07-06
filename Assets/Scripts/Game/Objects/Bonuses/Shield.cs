@@ -14,8 +14,12 @@ public class Shield : Buff {
 		go = Instantiate(shieldPrefab,entity.transform);
 		go.transform.localPosition = Vector3.zero;
 		part = go.GetComponent<ParticleSystem>();
-		if(!constains)
+		if (!constains) {
 			alpha = material.color.a;
+			Debug.Log(alpha);
+		} else {
+			entity.RemoveBuff(this);
+		}
 		//speed = ((part.main.startColor.color.a - minColorAlpha)/timeLife);
 		entity.shield = countHit;
 	}

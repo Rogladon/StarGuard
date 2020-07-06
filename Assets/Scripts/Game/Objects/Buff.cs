@@ -8,7 +8,7 @@ abstract public class Buff : MonoBehaviour {
 	protected bool constains {
 		get {
 			foreach (var i in entity.buffs) {
-				if (i.GetType() == this.GetType()) {
+				if (i.GetType() == this.GetType() && i != this) {
 					return true;
 				}
 			}
