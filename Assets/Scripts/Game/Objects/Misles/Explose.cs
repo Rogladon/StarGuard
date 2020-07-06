@@ -8,7 +8,7 @@ public class Explose : MonoBehaviour
 	public float factor;
 	public float speed;
 	public float speedPart;
-	private int damage;
+	public int damage;
 	public CircleCollider2D circleCollider;
 
 	public void Start() {

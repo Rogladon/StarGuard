@@ -2,19 +2,13 @@
   "stages": [
     {
       "id": 1,
-      "sheeps": [
-        0
-      ],
-      "precents": [
-        100
-      ],
-      "speedShips": [
-        100
-      ],
-      "kTime": 300,
-      "kSpeed": 300,
+      "sheeps": [ 0 ],
+      "precents": [ 50 ],
+      "speedShips": [ 2.0 ],
+      "kTime": 200,
+      "kSpeed": 200,
       "size": 60,
-      "startTime": 1
+      "startTime": 0.6145728826522827
     }
   ]
 }

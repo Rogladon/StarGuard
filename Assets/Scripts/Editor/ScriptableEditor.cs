@@ -54,6 +54,26 @@ public class SODataBehaviourEditor : Editor {
 					AssetDatabase.Refresh();
 					actions.Add(rR);
 					break;
+				case AI.sta.HorizontMove:
+					HorizontMove hM = CreateInstance<HorizontMove>();
+					id = 0;
+					while (AssetDatabase.IsMainAssetAtPathLoaded(path(hM))) {
+						id++;
+					}
+					AssetDatabase.CreateAsset(hM, path(hM));
+					AssetDatabase.Refresh();
+					actions.Add(hM);
+					break;
+				case AI.sta.PutBomb:
+					PutBomb pb = CreateInstance<PutBomb>();
+					id = 0;
+					while (AssetDatabase.IsMainAssetAtPathLoaded(path(pb))) {
+						id++;
+					}
+					AssetDatabase.CreateAsset(pb, path(pb));
+					AssetDatabase.Refresh();
+					actions.Add(pb);
+					break;
 			}
 		}
 		EditorGUILayout.EndHorizontal();
@@ -78,6 +98,14 @@ public class SODataBehaviourEditor : Editor {
 				case "RootRandom":
 					RootRandom rr = (RootRandom)i;
 					Editor.CreateEditor(rr).OnInspectorGUI();
+					break;
+				case "HorizontMove":
+					HorizontMove hM = (HorizontMove)i;
+					Editor.CreateEditor(hM).OnInspectorGUI();
+					break;
+				case "PutBomb":
+					PutBomb pb = (PutBomb)i;
+					Editor.CreateEditor(pb).OnInspectorGUI();
 					break;
 			}
 			EditorGUILayout.Space(10);

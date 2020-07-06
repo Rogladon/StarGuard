@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48093e5db24458f48b29aff30e8e02d2, type: 3}
+  m_Name: PutBombPutBomb0
+  m_EditorClassIdentifier: 
+  minMaxTime: {x: 4, y: 6}
+  prefabMissle: {fileID: 24156660725865978, guid: ce575ba730625084485a63489e50299a,
+    type: 3}

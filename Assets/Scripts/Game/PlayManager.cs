@@ -28,6 +28,8 @@ public class PlayManager : MonoBehaviour
 	[SerializeField]
 	float _borderField;
 	public static float borderField;
+	public static float globalBorderField;
+	public static float globalVerticalField;
 
 	public MainGeneration generate;
 	public GameHUD hud;
@@ -52,6 +54,8 @@ public class PlayManager : MonoBehaviour
 		speed = _speed;
 		bonuses = Bonuses.dictionary;
 		borderField = _borderField;
+		globalBorderField = Camera.main.ViewportToWorldPoint(new Vector3(1, 0f)).x+_borderField;
+		globalVerticalField = Camera.main.ViewportToWorldPoint(new Vector3(1, 0f)).y;
 		StartLevel();
 	}
 
@@ -64,17 +68,11 @@ public class PlayManager : MonoBehaviour
 		}
 		LevelManager.Stage stage = LevelManager.stages.stages[l];
 		for (int i = 0; i < stage.sheeps.Count; i++) {
-			Entity entity = Enemies.enemies[stage.sheeps[i]];
-			float precent = 0;
-			float speed = 1;
-			if(stage.precents.Count < i) {
-				precent = stage.precents[i];
-			}
-			//if (stage.speedShips.Count < i) {
-				speed = stage.speedShips[i];
-			//}
-			generate.enemies.Add(entity, precent);
-			generate.speedEnemies.Add(entity, speed);
+			MainGeneration.Ship ship = new MainGeneration.Ship(
+				stage.sheeps[i],
+				stage.precents[i],
+				stage.speedShips[i]);
+			generate.enemies.Add(ship);
 		}
 		sizeLevel = stage.size;
 		generate.k = stage.kTime;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Missle : MonoBehaviour
 {
-	protected float speed;
-	protected int damage;
+	public float speed;
+	public int damage;
 	protected Vector2 dir;
 	public Weapon.TypeMissle typeMissle;
 
@@ -17,6 +17,10 @@ public class Missle : MonoBehaviour
 	}
 
 	void Update() {
+		Move();
+	}
+
+	protected void Move() {
 		transform.position += transform.up * speed * Time.deltaTime;
 	}
 

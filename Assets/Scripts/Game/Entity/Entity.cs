@@ -31,14 +31,16 @@ public class Entity : MonoBehaviour {
 	[SerializeField]
 	public int coins;
 	[HideInInspector]
-	public bool shield;
+	public int shield;
 	private int _lifes;
 	private int lifes {
 		get {
 			return _lifes;
 		}
 		set {
-			if (shield) return;
+			if (shield > 0) {
+				return;
+			}
 			_lifes = value;
 			if (player) {
 				events.lifeEvent.Invoke(_lifes);
@@ -86,9 +88,11 @@ public class Entity : MonoBehaviour {
 	}
 
 	public void DoHit(int damage) {
-		if (shield) return;
-		else
-			lifes -= damage;
+		if(shield > 0) {
+			shield--;
+			return;
+		}
+		lifes -= damage;
 		AudioManager.events.hit.Invoke();
 	}
 

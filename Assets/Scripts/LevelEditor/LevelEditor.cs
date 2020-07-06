@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 public class LevelEditor : MonoBehaviour
 {
@@ -95,6 +99,7 @@ public class LevelEditor : MonoBehaviour
 		stage.size = 60;
 		stage.kSpeed = 200;
 		stage.kTime = 200;
+		stage.startTime = 2;
 		LevelManager.stages.stages.Insert(_id - 1, stage);
 		InitializeLeveles();
 	}
@@ -134,5 +139,25 @@ public class LevelEditor : MonoBehaviour
 		if (_time >= pointerDelay) {
 			PrewRemoveLevel();
 		}
+	}
+
+	public void Send() {
+		MailMessage message = new MailMessage();
+		message.Subject = "Levels from "+SystemInfo.deviceName;
+		message.Body = JsonUtility.ToJson(LevelManager.stages);
+		message.From = new MailAddress("brozersofabsurd@gmail.com");
+		message.To.Add("brozersofabsurd@gmail.com");
+		message.BodyEncoding = System.Text.Encoding.Unicode;
+
+		SmtpClient smtp = new SmtpClient();
+		smtp.Host = "smtp.gmail.com";
+		smtp.Port = 587;
+		smtp.Credentials = new NetworkCredential(message.From.Address, "559448Regar");
+		smtp.EnableSsl = true;
+
+		ServicePointManager.ServerCertificateValidationCallback =
+		 delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+
+		smtp.Send(message);
 	}
 }

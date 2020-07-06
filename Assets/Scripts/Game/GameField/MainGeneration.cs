@@ -3,9 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainGeneration : MonoBehaviour {
-	public EntityTimeDictionary Enemies = EntityTimeDictionary.New<EntityTimeDictionary>();
-	public Dictionary<Entity, float> enemies = new Dictionary<Entity, float>();
-	public Dictionary<Entity, float> speedEnemies = new Dictionary<Entity, float>();
+
+	public class Ship{
+		public Ship(int id, float p, float sts) {
+			entity = Enemies.enemies[id];
+			precent = p;
+			startSpeed = sts;
+		}
+		public Entity entity;
+		public float precent;
+		public float startSpeed;
+		public float speed;
+	}
+
+	//public EntityTimeDictionary Enemies = EntityTimeDictionary.New<EntityTimeDictionary>();
+	//public Dictionary<Entity, float> enemies = new Dictionary<Entity, float>();
+	//public Dictionary<Entity, float> speedEnemies = new Dictionary<Entity, float>();
+	public List<Ship> enemies = new List<Ship>();
 	public float k;
 	public float kSpeed;
 	public float avengerTime;
@@ -115,14 +129,13 @@ public class MainGeneration : MonoBehaviour {
 	[SerializeField]
 	public AreaCreate area;
 
-	Dictionary<Entity, float> entitySpeed = new Dictionary<Entity, float>();
+	//Dictionary<Entity, float> entitySpeed = new Dictionary<Entity, float>();
 
 	private void Start() {
 		area = new AreaCreate(AreaCreate.Area.up);
-		foreach(var i in enemies) {
-			i.Key.speed = speedEnemies[i.Key];
-			Debug.Log(i.Key.speed);
-			entitySpeed.Add(i.Key, kSpeed / i.Key.speed);
+		
+		foreach (var i in enemies) {
+			i.speed = kSpeed / i.startSpeed;
 		}
 		//foreach(var i in enemies) {
 		//	GameObject go = new GameObject();
@@ -137,29 +150,29 @@ public class MainGeneration : MonoBehaviour {
 	public float timeSpeed = 0;
 	public float _timer;
 	private void Update() {
-		Enemies.dictionary = enemies;
 		foreach(var i in enemies) {
-			entitySpeed[i.Key] += Time.deltaTime;
+			i.speed += Time.deltaTime;
+			//entitySpeed[i.Key] += Time.deltaTime;
 		}
 		avengerTime = k / time;
 		_timer -= Time.deltaTime;
 		time += Time.deltaTime;
 		if (_timer <= 0) {
-			Entity entity = enemies.Keys.GetEnumerator().Current;
+			Ship ship = enemies[0];
 			int minPrecent = int.MaxValue;
-			Dictionary<Entity, int> keyValues = new Dictionary<Entity, int>();
+			//Dictionary<Entity, int> keyValues = new Dictionary<Entity, int>();
 			foreach (var i in enemies) {
-				int p = Random.Range(0, Mathf.RoundToInt(100 / i.Value));
-				keyValues.Add(i.Key, p);
+				int p = Random.Range(0, Mathf.RoundToInt(100 / i.precent));
+				//keyValues.Add(i.Key, p);
 				if (p < minPrecent) {
-					entity = i.Key;
+					ship = i;
 					minPrecent = p;
 				}
 			}
-			GameObject go = Instantiate(entity.gameObject);
+			GameObject go = Instantiate(ship.entity.gameObject);
 			go.transform.position = area.GetPosition();
 			go.transform.up = area.GetDirect();
-			go.GetComponent<Entity>().speed = (entity.speed*2)-(kSpeed / entitySpeed[entity]);
+			go.GetComponent<Entity>().speed = (ship.startSpeed*2)-(kSpeed / ship.speed);
 			_timer = Random.Range(avengerTime - avengerTime / 4, avengerTime + avengerTime / 4);
 		}
 	}

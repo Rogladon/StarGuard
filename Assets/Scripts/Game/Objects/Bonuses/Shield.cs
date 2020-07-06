@@ -7,24 +7,34 @@ public class Shield : Buff {
 	public GameObject go;
 	public ParticleSystem part;
 	public float minColorAlpha;
-	public float speed;
+	public int countHit;
+	float alpha;
+	public Material material;
 	protected override void Action() {
 		go = Instantiate(shieldPrefab,entity.transform);
 		go.transform.localPosition = Vector3.zero;
 		part = go.GetComponent<ParticleSystem>();
-		speed = ((part.main.startColor.color.a - minColorAlpha)/timeLife);
-		entity.shield = true;
+		if(!constains)
+			alpha = material.color.a;
+		//speed = ((part.main.startColor.color.a - minColorAlpha)/timeLife);
+		entity.shield = countHit;
 	}
 
 	protected override void ActionUpdate() {
-		Color c = part.main.startColor.color;
-		c.a -= speed * Time.fixedDeltaTime;
-		part.startColor = c;
+		Color c = material.color;
+		c.a = (alpha / (float)countHit) * (float)entity.shield;
+		Debug.Log(entity.shield + " "+c.a);
+		material.color = c;
+		if(entity.shield == 0) {
+			entity.RemoveBuff(this);
+		}
 	}
 
 	protected override void OnDestroy() {
-		if (!constains) {
-			entity.shield = false;
+		if (alpha != 0) {
+			Color c = material.color;
+			c.a = alpha;
+			material.color = c;
 		}
 		Destroy(go);
 	}

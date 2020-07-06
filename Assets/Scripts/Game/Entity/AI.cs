@@ -10,7 +10,9 @@ public class AI : MonoBehaviour
 	public enum sta {
 		SimpleFly,
 		Shoot,
-		RootRandom
+		RootRandom,
+		HorizontMove,
+		PutBomb
 	}
 	[HideInInspector]
 	public List<Action> actions = new List<Action>();
