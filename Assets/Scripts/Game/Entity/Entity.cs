@@ -87,6 +87,10 @@ public class Entity : MonoBehaviour {
 		lifes = maxLifes;
 	}
 
+	public void Reborn() {
+		lifes = maxLifes;
+	}
+
 	public void DoHit(int damage) {
 		if(shield > 0) {
 			shield--;
@@ -148,8 +152,13 @@ public class Entity : MonoBehaviour {
 	}
 
 	private void OnDestroyThis() {
+
+		if (player) {
+			gameObject.SetActive(false);
+			return;
+		}
+
 		Destroy(gameObject);
-		if (player) return;
 		for (int i = 0; i < coins; i++) {
 			GameObject go = Instantiate(PlayManager.coinPrefab);
 			go.transform.position = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);

@@ -6,14 +6,18 @@ using UnityEngine.UI;
 public class GameHUD : MonoBehaviour {
 	[Header("Components")]
 	public Transform lifePanel;
-	public Text textCoin;
+	public Text textCoins;
+	public Text diedCoins;
+	public Text winCoins;
 	public GameObject pauseMenu;
 	public GameObject deathMenu;
+	public GameObject rebornMenu;
+	public GameObject winMenu;
 	public Text stage;
 	public Text num;
 	public Transform barSheep;
 	public GameObject bar;
-	private Entity entity;
+	private Entity entity { get { return PlayManager.entityPlayer; } }
 	Transform cam;
 
 
@@ -35,7 +39,6 @@ public class GameHUD : MonoBehaviour {
 	private List<GameObject> lifesGO = new List<GameObject>();
 	public void Start() {
 		cam = Camera.main.transform;
-		entity = PlayManager.entityPlayer;
 		for (int i = 0; i < entity.maxLifes; i++) {
 			GameObject go = Instantiate(lifeIcon, lifePanel);
 			lifesGO.Add(go);
@@ -45,7 +48,7 @@ public class GameHUD : MonoBehaviour {
 				Destroy(i);
 			}
 			if(life <= 0) {
-				DeathMenu();
+				PlayManager.events.death.Invoke(entity.coins);
 				return;
 			}
 			for (int i = 0; i < life; i++) {
@@ -73,7 +76,7 @@ public class GameHUD : MonoBehaviour {
 	private float speedBar;
 	private void Update() {
 		ShakeCamera();
-		textCoin.text = entity.coins.ToString();
+		textCoins.text = entity.coins.ToString();
 		if (startLevel) {
 			_time += Time.deltaTime;
 			num.transform.localScale += Vector3.one * speedSizes*Time.deltaTime;
@@ -97,18 +100,50 @@ public class GameHUD : MonoBehaviour {
 	}
 
 	public void Pause() {
+		entity.GetComponent<PlayerController>().lockMove = true;
 		Time.timeScale = 0;
 		pauseMenu.SetActive(true);
 	}
 
 	public void DeathMenu() {
+		diedCoins.text = entity.coins.ToString();
 		Time.timeScale = 0;
 		deathMenu.SetActive(true);
 	}
 
 	public void Continue() {
+		entity.GetComponent<PlayerController>().lockMove = false;
 		Time.timeScale = 1;
 		pauseMenu.SetActive(false);
+	}
+	public void OnRebornMenu() {
+		Time.timeScale = 0;
+		rebornMenu.SetActive(true);
+	}
+	public void OffRebornMenu() {
+		Time.timeScale = 1;
+		rebornMenu.SetActive(false);
+	}
+	public void Reborn() {
+		PlayManager.events.reborn.Invoke();
+	}
+	public void NoReborn() {
+		PlayManager.events.gameOver.Invoke();
+	}
+
+	public void CompleteLevel() {
+		entity.GetComponent<PlayerController>().lockMove = true;
+		Time.timeScale = 0;
+		winCoins.text = entity.coins.ToString();
+		winMenu.SetActive(true);
+	}
+	public void DoubleCoins(GameObject g) {
+		g.SetActive(false);
+		PlayManager.events.doubleCoins.Invoke();
+	}
+	public void NextLevel() {
+		Time.timeScale = 1;
+		PlayManager.events.nextLevel.Invoke();
 	}
 	public void Restart() {
 		Continue();

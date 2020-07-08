@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e527cf32cfa76884c9543a31c3ce93e5, type: 3}
   m_Name: EnemyHorizontMoveHorizontMove0
   m_EditorClassIdentifier: 
-  distance: {x: -1, y: 1}
-  timeMove: {x: 2, y: 3}
-  speedMove: 0.5
+  distance: {x: 0.5, y: 1}
+  timeMove: {x: 1, y: 2}
+  speedMove: 0.2

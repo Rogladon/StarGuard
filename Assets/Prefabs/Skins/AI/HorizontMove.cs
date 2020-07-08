@@ -33,7 +33,7 @@ public class HorizontMove : Action {
 
 	void RandomDist(AI ai) {
 		do {
-			ai.randomValue[dist] = ai.transform.position.x + Random.Range(distance.x, distance.y);
+			ai.randomValue[dist] = ai.transform.position.x + (Random.Range(distance.x, distance.y)*Mathf.Sign(Random.Range(-1,1)));
 		} while (ai.randomValue[dist] < -PlayManager.globalBorderField || ai.randomValue[dist] > PlayManager.globalBorderField);
 	}
 }

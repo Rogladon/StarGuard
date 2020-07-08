@@ -7,7 +7,6 @@ public class Explose : MonoBehaviour
 	public float radius;
 	public float factor;
 	public float speed;
-	public float speedPart;
 	public int damage;
 	public CircleCollider2D circleCollider;
 
@@ -31,6 +30,7 @@ public class Explose : MonoBehaviour
 			Entity entity;
 			if (other.TryGetComponent(out entity)) {
 				entity.DoHit(damage);
+				entity.shield = 0;
 			}
 		}
 	}

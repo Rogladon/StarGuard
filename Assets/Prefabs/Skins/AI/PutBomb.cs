@@ -9,8 +9,8 @@ public class PutBomb : Action {
 	string timeShoot = "timerShoot";
 
 	public override void StartAction(AI ai) {
-		minMaxTime.x = (-PlayManager.globalVerticalField / 2) / ai.entity.speed;
-		minMaxTime.y = ((-PlayManager.globalVerticalField * 2)-1) / ai.entity.speed;
+		minMaxTime.x = ((-PlayManager.globalVerticalField/4)) / ai.entity.speed;
+		minMaxTime.y = ((-PlayManager.globalVerticalField)-1) / ai.entity.speed;
 		foreach (var i in ai.entity.staticWeapons) {
 			i.speed = PlayManager.speed;
 			i.prefabMissle = prefabMissle;

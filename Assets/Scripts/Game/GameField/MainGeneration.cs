@@ -5,15 +5,17 @@ using UnityEngine;
 public class MainGeneration : MonoBehaviour {
 
 	public class Ship{
-		public Ship(int id, float p, float sts) {
+		public Ship(int id, float p, float sts, int l) {
 			entity = Enemies.enemies[id];
 			precent = p;
 			startSpeed = sts;
+			life = l;
 		}
 		public Entity entity;
 		public float precent;
 		public float startSpeed;
 		public float speed;
+		public int life;
 	}
 
 	//public EntityTimeDictionary Enemies = EntityTimeDictionary.New<EntityTimeDictionary>();
@@ -173,6 +175,7 @@ public class MainGeneration : MonoBehaviour {
 			go.transform.position = area.GetPosition();
 			go.transform.up = area.GetDirect();
 			go.GetComponent<Entity>().speed = (ship.startSpeed*2)-(kSpeed / ship.speed);
+			go.GetComponent<Entity>().maxLifes = ship.life;
 			_timer = Random.Range(avengerTime - avengerTime / 4, avengerTime + avengerTime / 4);
 		}
 	}

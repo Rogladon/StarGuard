@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8398204112f17a14a9223c135092a924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
-  factor: 0.25
+  radius: 2
+  factor: 0.5
   speed: 2
   speedPart: 1
   damage: 4

@@ -7,6 +7,9 @@ public class SpeedShoot : Buff {
 	List<Weapon> weapons = new List<Weapon>();
 	protected override void Action() {
 		if (constains) {
+			if(countBuff == 2) {
+				entity.RemoveBuff(this);
+			}
 			factorSpeed = 1+ ((factorSpeed-1)/2);
 			timeLife /= 2;
 		}

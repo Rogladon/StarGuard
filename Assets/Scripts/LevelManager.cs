@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 		public int id;
 		public List<int> sheeps = new List<int>();
 		public List<int> precents = new List<int>();
+		public List<int> lifes = new List<int>();
 		public List<float> speedShips = new List<float>();
 		public int kTime;
 		public int kSpeed;

@@ -15,6 +15,17 @@ abstract public class Buff : MonoBehaviour {
 			return false;
 		}
 	}
+	protected int countBuff {
+		get {
+			int c = 0;
+			foreach (var i in entity.buffs) {
+				if (i.GetType() == this.GetType() && i != this) {
+					c++;
+				}
+			}
+			return c;
+		}
+	}
 
 	protected float _time = 0.1f;
 

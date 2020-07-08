@@ -7,9 +7,21 @@ public class PlayManager : MonoBehaviour
 {
 	public static bool testPlay;
 	public class StartGame : UnityEvent { }
+	public class Death : UnityEvent<int> { }
+	public class Reborn : UnityEvent { }
+	public class GameOver : UnityEvent { }
+	public class NextLevel : UnityEvent { }
+	public class DoubleCoins : UnityEvent { }
+	public class Win : UnityEvent { }
 
 	public class Events {
 		public StartGame startGame = new StartGame();
+		public Death death = new Death();
+		public Reborn reborn = new Reborn();
+		public GameOver gameOver = new GameOver();
+		public NextLevel nextLevel = new NextLevel();
+		public DoubleCoins doubleCoins = new DoubleCoins();
+		public Win win = new Win();
 	}
 	public static Events events = new Events();
 
@@ -36,13 +48,46 @@ public class PlayManager : MonoBehaviour
 
 	float _time;
 	float sizeLevel;
+	int coins;
+	bool reborn = false;
 	void InitializeEvent() {
 		events.startGame.AddListener(() => {
 			hud.StartBar(sizeLevel);
 			generate.enabled = true;
 			entityPlayer.GetComponent<PlayerController>().lockMove = false;
 		});
+		events.death.AddListener((int c) => {
+			coins = c;
+			if (!reborn) {
+				hud.OnRebornMenu();
+			} else {
+				events.gameOver.Invoke();
+			}
+		});
+		events.reborn.AddListener(() => {
+			//Рекламма
+			RebornPlayer();
+			hud.OffRebornMenu();
+			reborn = true;
+		});
+		events.gameOver.AddListener(() => {
+			hud.OffRebornMenu();
+			hud.DeathMenu();
+			GameManager.events.gameOver.Invoke(coins);
+		});
+		events.doubleCoins.AddListener(()=> {
+			//Реклама
+			coins *=2;
+			hud.winCoins.text = coins.ToString();
+		});
+		events.nextLevel.AddListener(() => {
+			GameManager.events.completeLEvel.Invoke(coins);
+		});
+		events.win.AddListener(() => {
+			hud.CompleteLevel();
+		});
 	}
+	
 
 	void Awake() {
 		InitializeEvent();
@@ -61,17 +106,14 @@ public class PlayManager : MonoBehaviour
 
 	void StartLevel() {
 		int l;
-		if (testPlay) {
-			l = LevelStateEditor.levelID;
-		} else {
-			l = GameManager.player.level;
-		}
+		l = GameManager.player.level;
 		LevelManager.Stage stage = LevelManager.stages.stages[l];
 		for (int i = 0; i < stage.sheeps.Count; i++) {
 			MainGeneration.Ship ship = new MainGeneration.Ship(
 				stage.sheeps[i],
 				stage.precents[i],
-				stage.speedShips[i]);
+				stage.speedShips[i],
+				stage.lifes[i]);
 			generate.enemies.Add(ship);
 		}
 		sizeLevel = stage.size;
@@ -86,11 +128,31 @@ public class PlayManager : MonoBehaviour
 		hud.StartLevel(stage.id);
 	}
 
+	void RebornPlayer() {
+		entityPlayer.gameObject.SetActive(true);
+		entityPlayer.Reborn();
+		entityPlayer.position = Vector2.zero;
+		BonusBuff b = null;
+		foreach(var i in bonuses) {
+			if (i.Key.TryGetComponent<BonusBuff>(out b)) {
+				if (b.buff.nameBuff == "shield") {
+					break;
+				}
+			}
+			
+		}
+		entityPlayer.AddBuff(b.buff);
+		entityPlayer.GetComponent<PlayerController>().lockMove = false;
+	}
+
 	private void Update() {
 		Bonuses.dictionary = bonuses;
 		_time += Time.deltaTime;
 		if(_time >= sizeLevel) {
-			GameManager.events.completeLEvel.Invoke(entityPlayer.coins);
+			generate.gameObject.SetActive(false);
+			TotalKill._totalKill.GoTotalKill();
+			coins = entityPlayer.coins;
+			_time = int.MinValue;
 		}
 	}
 
@@ -102,3 +164,15 @@ public class PlayManager : MonoBehaviour
 		
 	}
 }
+
+
+/*
+ *	в худе событие игрока если жизней меньше 0 то отправка
+ * события в плейменеджер, отпрпавлет деньги и 
+ * сохраняет в переменную менеджера
+ *	событие в плей менеджер открывает меню воскрешения через худ
+ *	на кнопках функции из худа, либо реклама и воскрешение
+ * либо полная смерть - это все события в менеджере
+ *  
+ * 
+ */

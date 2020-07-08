@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -475,13 +476,19 @@ PrefabInstance:
     - target: {fileID: 5291438344109752755, guid: 8caa0259c668c9c40b4d2eb8a1921d37,
         type: 3}
       propertyPath: _skins.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5291438344109752755, guid: 8caa0259c668c9c40b4d2eb8a1921d37,
         type: 3}
       propertyPath: _skins.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: ff50320655bc3014eaa47adf6792a4c4,
+        type: 2}
+    - target: {fileID: 5291438344109752755, guid: 8caa0259c668c9c40b4d2eb8a1921d37,
+        type: 3}
+      propertyPath: _skins.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 41da2690c0e1f9449950b7c5df8cbb06,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8caa0259c668c9c40b4d2eb8a1921d37, type: 3}

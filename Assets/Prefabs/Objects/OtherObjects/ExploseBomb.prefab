@@ -49,7 +49,6 @@ MonoBehaviour:
   radius: 1
   factor: 0
   speed: 2
-  speedPart: 1
   damage: 1
   circleCollider: {fileID: 5376474360540254483}
 --- !u!198 &5376474360540254481
@@ -1381,7 +1380,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.9811321, g: 0.941097, b: 0, a: 1}
+        key0: {r: 0, g: 0.015125216, b: 0.6886792, a: 1}
         key1: {r: 0.7735849, g: 0.37909296, b: 0, a: 0.44705883}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}

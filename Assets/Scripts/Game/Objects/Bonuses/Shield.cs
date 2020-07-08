@@ -16,7 +16,6 @@ public class Shield : Buff {
 		part = go.GetComponent<ParticleSystem>();
 		if (!constains) {
 			alpha = material.color.a;
-			Debug.Log(alpha);
 		} else {
 			entity.RemoveBuff(this);
 		}
@@ -27,7 +26,6 @@ public class Shield : Buff {
 	protected override void ActionUpdate() {
 		Color c = material.color;
 		c.a = (alpha / (float)countHit) * (float)entity.shield;
-		Debug.Log(entity.shield + " "+c.a);
 		material.color = c;
 		if(entity.shield == 0) {
 			entity.RemoveBuff(this);

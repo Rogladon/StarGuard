@@ -5,19 +5,19 @@ using UnityEngine;
 public class Bomb : Missle
 {
 	public Explose explose;
-	public SpriteRenderer renderer;
+	public Light light;
 	public float timeLife;
 	float timer;
 	float speed;
 	private void Start() {
-		speed = (renderer.color.g) / timeLife;
+		speed = (light.color.g) / timeLife;
 	}
 	private void Update() {
 		timer += Time.deltaTime;
-		Color c = renderer.color;
+		Color c = light.color;
 		c.g -= speed*Time.deltaTime;
 		c.b -= speed * Time.deltaTime;
-		renderer.color = c;
+		light.color = c;
 		if(timer >= timeLife) {
 			Destroy(gameObject);
 			OnThisDestroy();

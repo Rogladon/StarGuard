@@ -17,6 +17,7 @@ public class LevelStateEditor : MonoBehaviour
 	public GameObject editPanel;
 	public Slider sliderPrecent;
 	public Slider sliderSpeed;
+	public Slider sliderHp;
 	public GameObject removeShipPanel;
 	public Text nameEditPanel;
 	[Header("Prefabs")]
@@ -44,6 +45,7 @@ public class LevelStateEditor : MonoBehaviour
 		}
 		sliderPrecent.GetComponentInChildren<Text>().text = ((int)sliderPrecent.value).ToString();
 		sliderSpeed.GetComponentInChildren<Text>().text = (sliderSpeed.value).ToString("N2");
+		sliderHp.GetComponentInChildren<Text>().text = ((int)sliderHp.value).ToString();
 	}
 	List<Entity> enemies = Enemies.enemies;
 	private void InitializeShip() {
@@ -90,6 +92,7 @@ public class LevelStateEditor : MonoBehaviour
 		stage.sheeps.Add(id);
 		stage.precents.Add(50);
 		stage.speedShips.Add(2);
+		stage.lifes.Add(27);
 		InitilizeSelectedShip();
 		idStage = stage.sheeps.Count - 1;
 		EditShip();
@@ -99,6 +102,7 @@ public class LevelStateEditor : MonoBehaviour
 		nameEditPanel.text = enemies[stage.sheeps[idStage]].name;
 		sliderPrecent.value = stage.precents[idStage];
 		sliderSpeed.value = stage.speedShips[idStage];
+		sliderHp.value = stage.lifes[idStage];
 	}
 	public void CancelEditPanel() {
 		editPanel.SetActive(false);
@@ -107,6 +111,7 @@ public class LevelStateEditor : MonoBehaviour
 		editPanel.SetActive(false);
 		stage.precents[idStage] = (int)sliderPrecent.value;
 		stage.speedShips[idStage] = sliderSpeed.value;
+		stage.lifes[idStage] = (int)sliderHp.value;
 	}
 	public void PrewRemoveShip() {
 		removeShipPanel.SetActive(true);
@@ -141,6 +146,7 @@ public class LevelStateEditor : MonoBehaviour
 		}
 	}
 	public void Play() {
+		GameManager.player.level = levelID;
 		PlayManager.testPlay = true;
 		GameManager.LoadLevel();
 		Debug.Log(LevelManager.stages.stages[idStage].speedShips[0]);

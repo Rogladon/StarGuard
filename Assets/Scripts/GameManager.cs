@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour {
 	public class ChoiceSkin : UnityEvent<int, int> { }
 	public class BySkin : UnityEvent<int, int> { }
 	public class CompleteLevel : UnityEvent<int> { }
+	public class GameOver : UnityEvent<int> { }
 	public class Events {
 		public ChoiceSkin choiceSkin = new ChoiceSkin();
 		public BySkin bySkin = new BySkin();
 		public CompleteLevel completeLEvel = new CompleteLevel();
+		public GameOver gameOver = new GameOver();
 	}
 	public static Events events = new Events();
 	public class Player {
@@ -76,6 +78,10 @@ public class GameManager : MonoBehaviour {
 			player.coins += coins;
 			player.level += 1;
 			LoadLevel();
+			Save();
+		});
+		events.gameOver.AddListener((int coins) => {
+			player.coins += coins;
 			Save();
 		});
 	}
