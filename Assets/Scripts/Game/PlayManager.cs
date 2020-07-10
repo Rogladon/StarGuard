@@ -9,9 +9,11 @@ public class PlayManager : MonoBehaviour
 	public class StartGame : UnityEvent { }
 	public class Death : UnityEvent<int> { }
 	public class Reborn : UnityEvent { }
+	public class AdReborn : UnityEvent { }
 	public class GameOver : UnityEvent { }
 	public class NextLevel : UnityEvent { }
 	public class DoubleCoins : UnityEvent { }
+	public class AdDoubleCoins : UnityEvent { }
 	public class Win : UnityEvent { }
 
 	public class Events {
@@ -22,6 +24,8 @@ public class PlayManager : MonoBehaviour
 		public NextLevel nextLevel = new NextLevel();
 		public DoubleCoins doubleCoins = new DoubleCoins();
 		public Win win = new Win();
+		public AdReborn adReborn = new AdReborn();
+		public AdDoubleCoins adDoubleCoins = new AdDoubleCoins();
 	}
 	public static Events events = new Events();
 
@@ -85,6 +89,12 @@ public class PlayManager : MonoBehaviour
 		});
 		events.win.AddListener(() => {
 			hud.CompleteLevel();
+		});
+		events.adDoubleCoins.AddListener(() => {
+			AdManager.events.rewardAd.Invoke(events.doubleCoins);
+		});
+		events.adReborn.AddListener(() => {
+			AdManager.events.rewardAd.Invoke(events.reborn);
 		});
 	}
 	

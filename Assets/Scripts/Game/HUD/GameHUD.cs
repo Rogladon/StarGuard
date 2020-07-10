@@ -125,7 +125,7 @@ public class GameHUD : MonoBehaviour {
 		rebornMenu.SetActive(false);
 	}
 	public void Reborn() {
-		PlayManager.events.reborn.Invoke();
+		PlayManager.events.adReborn.Invoke();
 	}
 	public void NoReborn() {
 		PlayManager.events.gameOver.Invoke();
@@ -139,7 +139,7 @@ public class GameHUD : MonoBehaviour {
 	}
 	public void DoubleCoins(GameObject g) {
 		g.SetActive(false);
-		PlayManager.events.doubleCoins.Invoke();
+		PlayManager.events.adDoubleCoins.Invoke();
 	}
 	public void NextLevel() {
 		Time.timeScale = 1;
