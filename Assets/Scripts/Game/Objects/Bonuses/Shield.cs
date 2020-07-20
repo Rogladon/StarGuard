@@ -29,7 +29,7 @@ public class Shield : Buff {
 
 	protected override void ActionUpdate() {
 		if(curHits != entity.shield) {
-			_time -= (timeLife / countHit) * (curHits - entity.shield);
+			_time += (timeLife / countHit) * (curHits - entity.shield);
 			curHits = entity.shield;
 		}
 		Color c = material.color;
@@ -41,10 +41,8 @@ public class Shield : Buff {
 	}
 
 	protected override void OnDestroy() {
-		if (alpha != 0) {
-			Color c = material.color;
-			c.a = alpha;
-			material.color = c;
+		if(_time>= timeLife) {
+			entity.shield = 0;
 		}
 		Destroy(go);
 	}
