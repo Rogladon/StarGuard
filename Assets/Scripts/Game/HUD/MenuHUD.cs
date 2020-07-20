@@ -9,6 +9,7 @@ public class MenuHUD : MonoBehaviour
 	public GameObject mainMenu;
 	public GameObject mall;
 	public Animator animatorDoor;
+	public GameObject config;
 	public class OpenDoor : UnityEvent { }
 
 	public class Events {
@@ -54,5 +55,11 @@ public class MenuHUD : MonoBehaviour
 	}
 	public void LevelEditor() {
 		SceneManager.LoadScene(3);
+	}
+	public void OpenConfig() {
+		config.SetActive(true);
+	}
+	public void CancelConfig() {
+		config.SetActive(false);
 	}
 }

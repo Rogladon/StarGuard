@@ -56,7 +56,7 @@ public class GameHUD : MonoBehaviour {
 				lifesGO.Add(go);
 			}
 			StartShakeCamera(ShakeFactor);
-			Handheld.Vibrate();
+			AudioManager.events.vibro.Invoke();
 		});
 	}
 

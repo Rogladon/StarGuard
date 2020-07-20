@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator start() {
-		yield return new WaitForSeconds(0);
+		yield return new WaitForSeconds(2);
 		SceneManager.LoadScene(1);
 	}
 
