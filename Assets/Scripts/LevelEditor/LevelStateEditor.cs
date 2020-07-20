@@ -39,7 +39,7 @@ public class LevelStateEditor : MonoBehaviour
 	float _timeSave;
 	private void Update() {
 		_timeSave += Time.deltaTime;
-		if (_timeSave > 3) {
+		if (_timeSave > 1) {
 			LevelManager.SaveLevelJson();
 			_timeSave = 0;
 		}

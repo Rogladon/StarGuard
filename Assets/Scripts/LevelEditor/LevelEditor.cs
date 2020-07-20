@@ -33,7 +33,7 @@ public class LevelEditor : MonoBehaviour
 	float _timeSave;
 	private void Update() {
 		_timeSave += Time.deltaTime;
-		if (_timeSave > 3) {
+		if (_timeSave > 1) {
 			LevelManager.SaveLevelJson();
 			_timeSave = 0;
 		}
@@ -99,6 +99,7 @@ public class LevelEditor : MonoBehaviour
 		stage.size = 60;
 		stage.kSpeed = 200;
 		stage.kTime = 200;
+		stage.kBonus = 1;
 		stage.startTime = 2;
 		LevelManager.stages.stages.Insert(_id - 1, stage);
 		InitializeLeveles();

@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
 		public int kSpeed;
 		public int size;
 		public float startTime;
+		public float kBonus;
 	}
 	[SerializeField]
 	[System.Serializable]

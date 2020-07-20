@@ -10,6 +10,7 @@ public class LevelMainStateEditor : MonoBehaviour
 	public Slider sliderTime;
 	public Slider sliderSpeed;
 	public Slider sliderStartTime;
+	public Slider sliderBonus;
 
 	int id => LevelStateEditor.levelID;
 	LevelManager.Stage stage;
@@ -19,15 +20,18 @@ public class LevelMainStateEditor : MonoBehaviour
 		sliderSpeed.value = stage.kSpeed;
 		sliderTime.value = stage.kTime;
 		sliderStartTime.value = stage.startTime;
+		sliderBonus.value = stage.kBonus;
 	}
 	public void Update() {
 		stage.size = (int)sliderSize.value;
 		stage.kTime = (int)sliderTime.value;
 		stage.kSpeed = (int)sliderSpeed.value;
 		stage.startTime = sliderStartTime.value;
+		stage.kBonus = sliderBonus.value;
 		sliderSize.GetComponentInChildren<Text>().text = ((int)sliderSize.value).ToString();
 		sliderTime.GetComponentInChildren<Text>().text = ((int)sliderTime.value).ToString();
 		sliderSpeed.GetComponentInChildren<Text>().text = ((int)sliderSpeed.value).ToString();
 		sliderStartTime.GetComponentInChildren<Text>().text = (sliderStartTime.value).ToString("N2");
+		sliderBonus.GetComponentInChildren<Text>().text = (sliderBonus.value).ToString("N2");
 	}
 }

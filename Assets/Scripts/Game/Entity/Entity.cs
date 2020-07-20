@@ -175,8 +175,14 @@ public class Entity : MonoBehaviour {
 				currentBonus = i.Key;
 				minPrecent = p;
 			}
+			if(p == minPrecent) {
+				if(Random.Range(0,2) == 0) {
+					currentBonus = i.Key;
+					minPrecent = p;
+				}
+			}
 		}
-		if (minPrecent == 1) {
+		if (minPrecent == 0) {
 			if (PlayManager.countBonus[currentBonus] > 3) return;
 			GameObject go = Instantiate(currentBonus.gameObject);
 			go.transform.position = transform.position;

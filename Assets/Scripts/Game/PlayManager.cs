@@ -126,7 +126,17 @@ public class PlayManager : MonoBehaviour
 				stage.lifes[i]);
 			generate.enemies.Add(ship);
 		}
-		sizeLevel = stage.size;
+		Dictionary<Bonus, int> d = new Dictionary<Bonus, int>();
+		foreach(var i in bonuses.Keys) {
+			d.Add(i, bonuses[i]);
+		}
+		foreach (var i in d) {
+			if (i.Key.GetType() != typeof(BonusWeapon)) {
+				Debug.Log(i.Key.name);
+				bonuses[i.Key] = (int)Mathf.Round(i.Value * stage.kBonus);
+			}
+		}
+			sizeLevel = stage.size;
 		generate.k = stage.kTime;
 		generate.kSpeed = stage.kSpeed;
 		generate.avengerTime = stage.startTime;
