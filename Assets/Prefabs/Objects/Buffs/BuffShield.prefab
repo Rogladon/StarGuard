@@ -44,11 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameBuff: shield
-  timeLife: Infinity
+  timeLife: 10
   shieldPrefab: {fileID: 6374005429566070683, guid: d3761903e3e54624db4199513e15ce8a,
     type: 3}
-  go: {fileID: 0}
-  part: {fileID: 0}
-  minColorAlpha: 0
   countHit: 3
   material: {fileID: 2100000, guid: 62a439f8021789b4dbd526c1e0831da8, type: 2}
