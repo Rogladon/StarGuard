@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99c5d112f7baa2f41b0e79eb0475513f, type: 3}
-  m_Name: SkinTriangle
+  m_Name: SkinMarlet2
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4432811489001141811, guid: ca354c9e4a251954da5e750cac1c4429, type: 3}
-  icon: {fileID: 21300000, guid: a3996c0df0b544944a3b6b28b0844e93, type: 3}
+  prefab: {fileID: 3456660420217696372, guid: 80c853b4a4129fd45b11a0c61eee19d3, type: 3}
+  icon: {fileID: 21300000, guid: a2965e1be3e95ff469069853414b7230, type: 3}
   pack: 0
-  index: 2
+  index: 0
   has: 0
-  globalID: 2
+  globalID: 0
