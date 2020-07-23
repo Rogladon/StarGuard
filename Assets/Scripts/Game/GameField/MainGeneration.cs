@@ -49,12 +49,12 @@ public class MainGeneration : MonoBehaviour {
 			switch (area) {
 				case Area.left:
 					pos.y = Random.Range(up, down);
-					pos.x = left - 3;
+					pos.x = left - 0.5f;
 					pos.z = 0;
 					break;
 				case Area.right:
 					pos.y = Random.Range(up, down);
-					pos.x = right + 3;
+					pos.x = right + 0.5f;
 					pos.z = 0;
 					break;
 				case Area.up:
