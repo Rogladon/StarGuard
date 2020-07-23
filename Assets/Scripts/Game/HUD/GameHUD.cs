@@ -17,6 +17,8 @@ public class GameHUD : MonoBehaviour {
 	public Text num;
 	public Transform barSheep;
 	public GameObject bar;
+	public GameObject x2Button;
+	public RectTransform coinsPlane;
 	private Entity entity { get { return PlayManager.entityPlayer; } }
 	Transform cam;
 
@@ -138,8 +140,12 @@ public class GameHUD : MonoBehaviour {
 		winMenu.SetActive(true);
 	}
 	public void DoubleCoins(GameObject g) {
-		g.SetActive(false);
 		PlayManager.events.adDoubleCoins.Invoke();
+	}
+
+	public void DoubleCoinsComplete() {
+		x2Button.SetActive(false);
+		coinsPlane.anchoredPosition = new Vector2(0, coinsPlane.anchoredPosition.y);
 	}
 	public void NextLevel() {
 		Time.timeScale = 1;

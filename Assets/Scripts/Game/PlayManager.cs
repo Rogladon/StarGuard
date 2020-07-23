@@ -80,7 +80,8 @@ public class PlayManager : MonoBehaviour
 			GameManager.events.gameOver.Invoke(coins);
 		});
 		events.doubleCoins.AddListener(()=> {
-			//Реклама
+			hud.DoubleCoinsComplete();
+			GameManager.events.addCoins.Invoke(coins);
 			coins *=2;
 			hud.winCoins.text = coins.ToString();
 		});
@@ -88,6 +89,7 @@ public class PlayManager : MonoBehaviour
 			GameManager.events.completeLEvel.Invoke(coins);
 		});
 		events.win.AddListener(() => {
+			GameManager.events.completeLEvel.Invoke(coins);
 			hud.CompleteLevel();
 		});
 		events.adDoubleCoins.AddListener(() => {
