@@ -148,8 +148,10 @@ public class GameHUD : MonoBehaviour {
 		coinsPlane.anchoredPosition = new Vector2(0, coinsPlane.anchoredPosition.y);
 	}
 	public void NextLevel() {
-		Time.timeScale = 1;
 		PlayManager.events.nextLevel.Invoke();
+		Debug.Log("NextLevelHud");
+		Time.timeScale = 1;
+		
 	}
 	public void Restart() {
 		Continue();

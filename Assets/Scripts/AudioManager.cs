@@ -63,13 +63,23 @@ public class AudioManager : MonoBehaviour
 	float maxTimeShoot = 0.1f;
 	void InitilizeEvents() {
 		events.gameTrack.AddListener(() => {
-			audioSource.clip = typeAudioTrack[TypeTrack.gameTrack];
-			audioSource.loop = true;
-			audioSource.Play();
+			if (audioSource.clip != typeAudioTrack[TypeTrack.gameTrack]) {
+				audioSource.clip = typeAudioTrack[TypeTrack.gameTrack];
+				
+			}
+			if (!audioSource.isPlaying) {
+				audioSource.loop = true;
+				audioSource.Play();
+			}
 		});
 		events.mainMenuTrack.AddListener(() => {
-			audioSource.clip = typeAudioTrack[TypeTrack.mainMenuTrack];
-			audioSource.Play();
+			if (audioSource.clip != typeAudioTrack[TypeTrack.mainMenuTrack]) {
+				audioSource.clip = typeAudioTrack[TypeTrack.mainMenuTrack];
+			}
+			if (!audioSource.isPlaying) {
+				audioSource.loop = true;
+				audioSource.Play();
+			}
 		});
 		events.playerShoot.AddListener((int type) => {
 			if (_time < maxTimeShoot) return;

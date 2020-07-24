@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour {
 		});
 		events.nextLevel.AddListener(() => {
 			LoadLevel();
+			Debug.Log("NextLevel");
 		});
 		events.gameOver.AddListener((int coins) => {
 			player.coins += coins;

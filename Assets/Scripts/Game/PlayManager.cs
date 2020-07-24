@@ -86,7 +86,7 @@ public class PlayManager : MonoBehaviour
 			hud.winCoins.text = coins.ToString();
 		});
 		events.nextLevel.AddListener(() => {
-			GameManager.events.completeLEvel.Invoke(coins);
+			GameManager.events.nextLevel.Invoke();
 		});
 		events.win.AddListener(() => {
 			GameManager.events.completeLEvel.Invoke(coins);

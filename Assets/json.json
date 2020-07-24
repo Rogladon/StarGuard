@@ -4,11 +4,61 @@
       "id": 1,
       "sheeps": [ 0 ],
       "precents": [ 50 ],
-      "speedShips": [ 2.0 ],
+      "lifes": [ 16 ],
+      "speedShips": [ 1.4347267150878907 ],
       "kTime": 200,
       "kSpeed": 200,
-      "size": 60,
-      "startTime": 0.6145728826522827
+      "size": 46,
+      "startTime": 2.5601882934570314,
+      "kBonus" : 1
+    },
+    {
+      "id": 2,
+      "sheeps": [ 0 ],
+      "precents": [ 50 ],
+      "lifes": [ 26 ],
+      "speedShips": [ 2.0 ],
+      "kTime": 200,
+      "kSpeed": 278,
+      "size": 54,
+      "startTime": 2.0,
+      "kBonus": 1
+    },
+    {
+      "id": 3,
+      "sheeps": [ 0, 1 ],
+      "precents": [ 50, 50 ],
+      "lifes": [ 27, 20 ],
+      "speedShips": [ 2.0, 2.0 ],
+      "kTime": 200,
+      "kSpeed": 200,
+      "size": 112,
+      "startTime": 2.0,
+      "kBonus": 1
+    },
+    {
+      "id": 4,
+      "sheeps": [ 1, 2 ],
+      "precents": [ 50, 50 ],
+      "lifes": [ 21, 24 ],
+      "speedShips": [ 2.0, 2.0 ],
+      "kTime": 200,
+      "kSpeed": 200,
+      "size": 114,
+      "startTime": 2.0,
+      "kBonus": 1
+    },
+    {
+      "id": 5,
+      "sheeps": [ 2, 0, 1 ],
+      "precents": [ 50, 50, 50 ],
+      "lifes": [ 27, 27, 21 ],
+      "speedShips": [ 2.0, 2.0, 2.0 ],
+      "kTime": 200,
+      "kSpeed": 200,
+      "size": 118,
+      "startTime": 2.0,
+      "kBonus": 1
     }
   ]
 }
