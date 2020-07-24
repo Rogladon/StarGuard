@@ -62,4 +62,7 @@ public class MenuHUD : MonoBehaviour
 	public void CancelConfig() {
 		config.SetActive(false);
 	}
+	public void OpenURL(string url) {
+		Application.OpenURL(url);
+	}
 }
