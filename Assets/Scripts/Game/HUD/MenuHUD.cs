@@ -8,6 +8,7 @@ public class MenuHUD : MonoBehaviour
 {
 	public GameObject mainMenu;
 	public GameObject mall;
+	public GameObject developerPage;
 	public Animator animatorDoor;
 	public GameObject config;
 	public class OpenDoor : UnityEvent { }
@@ -17,19 +18,30 @@ public class MenuHUD : MonoBehaviour
 	}
 	public static Events events = new Events();
 	public bool openMall = false;
+	public bool left = false;
 	private void Start() {
 		AudioManager.events.mainMenuTrack.Invoke();
 		events.openDoor.AddListener(() => {
-			if (!openMall) {
-				Debug.Log("OpenMall");
-				mall.SetActive(true);
-				mainMenu.SetActive(false);
-				openMall = true;
+			if (!left) {
+				if (!openMall) {
+					mall.SetActive(true);
+					mainMenu.SetActive(false);
+					openMall = true;
+				} else {
+					mall.SetActive(false);
+					mainMenu.SetActive(true);
+					openMall = false;
+				}
 			} else {
-				Debug.Log("CloseMall");
-				mall.SetActive(false);
-				mainMenu.SetActive(true);
-				openMall = false;
+				if (!openMall) {
+					developerPage.SetActive(true);
+					mainMenu.SetActive(false);
+					openMall = true;
+				} else {
+					developerPage.SetActive(false);
+					mainMenu.SetActive(true);
+					openMall = false;
+				}
 			}
 			animatorDoor.SetTrigger("Close");
 		});
@@ -51,6 +63,11 @@ public class MenuHUD : MonoBehaviour
 	}
 
 	public void Mall() {
+		left = false;
+		animatorDoor.SetTrigger("Open");
+	}
+	public void DeveloperPage() {
+		left = true;
 		animatorDoor.SetTrigger("Open");
 	}
 	public void LevelEditor() {

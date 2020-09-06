@@ -97,7 +97,6 @@ public class Entity : MonoBehaviour {
 			return;
 		}
 		lifes -= damage;
-		AudioManager.events.hit.Invoke();
 	}
 
 	public void AddBonus(Bonus bonus) {
@@ -157,7 +156,7 @@ public class Entity : MonoBehaviour {
 			gameObject.SetActive(false);
 			return;
 		}
-
+		AudioManager.events.hit.Invoke();
 		Destroy(gameObject);
 		for (int i = 0; i < coins; i++) {
 			GameObject go = Instantiate(PlayManager.coinPrefab);

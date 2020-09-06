@@ -47,6 +47,10 @@ public class PlayManager : MonoBehaviour
 	public static float globalBorderField;
 	public static float globalVerticalField;
 
+	[SerializeField]
+	Transform _targetCoins;
+	public static Transform targetCoins;
+
 	public MainGeneration generate;
 	public GameHUD hud;
 
@@ -108,6 +112,7 @@ public class PlayManager : MonoBehaviour
 		}
 		generate.enabled = false;
 		coinPrefab = _coinPrefab;
+		targetCoins = _targetCoins;
 		speed = _speed;
 		bonuses = Bonuses.dictionary;
 		borderField = _borderField;
@@ -119,7 +124,28 @@ public class PlayManager : MonoBehaviour
 	void StartLevel() {
 		int l;
 		l = GameManager.player.level;
-		LevelManager.Stage stage = LevelManager.stages.stages[l];
+		LevelManager.Stage stage;
+		if (l < LevelManager.stages.stages.Count) {
+			stage = LevelManager.stages.stages[l];
+		} else {
+			if (l < LevelManager.stages.stages.Count * 2) {
+				l = l - LevelManager.stages.stages.Count;
+				stage = new LevelManager.Stage() {
+					id = l + LevelManager.stages.stages.Count,
+					sheeps = LevelManager.stages.stages[l].sheeps,
+					size = LevelManager.stages.stages[l].size,
+					precents = LevelManager.stages.stages[l].precents,
+					lifes = LevelManager.stages.stages[l].lifes,
+					startTime = LevelManager.stages.stages[l].startTime - (LevelManager.stages.stages[l].startTime / 3),
+					speedShips = LevelManager.stages.stages[l].speedShips,
+					kBonus = LevelManager.stages.stages[l].kBonus,
+					kTime = LevelManager.stages.stages[l].kTime - (LevelManager.stages.stages[l].kTime / 3),
+					kSpeed = LevelManager.stages.stages[l].kSpeed - (LevelManager.stages.stages[l].kSpeed / 3)
+				};
+			} else {
+				stage = LevelManager.lastLevel.stage;
+			}
+		}
 		for (int i = 0; i < stage.sheeps.Count; i++) {
 			MainGeneration.Ship ship = new MainGeneration.Ship(
 				stage.sheeps[i],

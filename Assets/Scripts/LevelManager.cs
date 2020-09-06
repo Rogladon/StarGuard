@@ -25,16 +25,24 @@ public class LevelManager : MonoBehaviour
 		public List<Stage> stages = new List<Stage>();
 	}
 	[SerializeField]
+	[System.Serializable]
+	public class LastLevel {
+		public Stage stage = new Stage();
+	}
+	[SerializeField]
 	public static Stages stages;
+	[SerializeField]
+	public static LastLevel lastLevel;
 
 	public TextAsset json;
+	public TextAsset lastLevelJson;
 	public void Awake() {
 		if (PlayerPrefs.HasKey("LevelJson")) {
 			stages = JsonUtility.FromJson<Stages>(PlayerPrefs.GetString("LevelJson"));
 		} else {
 			stages = JsonUtility.FromJson<Stages>(json.text);
-
 		}
+		lastLevel = JsonUtility.FromJson<LastLevel>(lastLevelJson.text);
 	}
 
 	public static void SaveLevelJson() {

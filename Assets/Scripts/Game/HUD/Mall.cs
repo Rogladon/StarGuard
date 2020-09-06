@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Mall : MonoBehaviour
 {
+	public const int PRICE_ONE_SHIP = 1000;
+
 	[Header("Const")]
 	public int maxCountChoice;
 	public float startTime;
@@ -18,7 +20,6 @@ public class Mall : MonoBehaviour
 	private List<Item> items = new List<Item>();
 	public GameObject item;
 	public Text textMoney;
-	public int price;
 
 	private GameObject emptyItem;
 
@@ -34,7 +35,7 @@ public class Mall : MonoBehaviour
 
 	void InstItem(int pack) {
 		choiceWindow.SetActive(false);
-		if (GameManager.player.coins >= price) {
+		if (GameManager.player.coins >= PRICE_ONE_SHIP) {
 			btnBy.interactable = true;
 		} else {
 			btnBy.interactable = false;
@@ -72,7 +73,7 @@ public class Mall : MonoBehaviour
 	}
 
 	public void BySheep() {
-		if (GameManager.player.coins < price) return;
+		if (GameManager.player.coins < PRICE_ONE_SHIP) return;
 		closeItems = new List<Item>();
 		foreach (var i in items) {
 			if (!i.has) {
@@ -80,7 +81,7 @@ public class Mall : MonoBehaviour
 			}
 		}
 		if (closeItems.Count == 0) return;
-		GameManager.player.coins -= price;
+		GameManager.player.coins -= PRICE_ONE_SHIP;
 		textMoney.text = GameManager.player.coins.ToString();
 		choiceWindow.SetActive(true);
 		_time = startTime;

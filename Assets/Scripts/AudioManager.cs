@@ -86,16 +86,16 @@ public class AudioManager : MonoBehaviour
 			_time = 0;
 			switch (type) {
 				case 0:
-					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot], 0.5f);
+					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot], 1f);
 					break;
 				default:
-					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot], 0.5f);
+					audioSource.PlayOneShot(typeAudioTrack[TypeTrack.playerShoot], 1f);
 					break;
 			}
 
 		});
 		events.hit.AddListener(() => {
-			audioSource.PlayOneShot(typeAudioTrack[TypeTrack.hit],0.5f);
+			audioSource.PlayOneShot(typeAudioTrack[TypeTrack.hit],2f);
 		});
 		events.vibro.AddListener(() => {
 			if(!muteVibro)

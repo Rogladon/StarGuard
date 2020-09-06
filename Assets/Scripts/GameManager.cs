@@ -79,8 +79,10 @@ public class GameManager : MonoBehaviour {
 			Save();
 		});
 		events.completeLEvel.AddListener((int coins) => {
+			FacebookManager.events.levelCompleted.Invoke(player.level);
 			events.addCoins.Invoke(coins);
 			player.level += 1;
+			
 			Save();
 		});
 		events.nextLevel.AddListener(() => {
@@ -131,7 +133,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void LoadLevel() {
-		//TOODO
+		
 		SceneManager.LoadScene(2);
 	}
 	public static void BackMenu() {
@@ -141,7 +143,10 @@ public class GameManager : MonoBehaviour {
 			SceneManager.LoadScene(1);
 		}
 	}
-
+	[ContextMenu("DeleteAll")]
+	void DeleteAll() {
+		PlayerPrefs.DeleteAll();
+	}
 
 	[ContextMenu("DeleteAllSheeps")]
 	void DeleteAllSheep() {

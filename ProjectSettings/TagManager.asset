@@ -8,6 +8,7 @@ TagManager:
   - planets
   - KillObject
   - NoDestroy
+  - TargetCoins
   layers:
   - Default
   - TransparentFX
